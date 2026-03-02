@@ -18,16 +18,16 @@ Created by Lloyd J Howarth
 
 <h2 id="overview">🔍 Overview</h2>
 
-Monocade is an all-in-one game engine designed to bring your ideas to life
+Monocade is an all-in-one game engine designed for complete beginners
 
 > Do not use this branch for development
 
 Getting started...
 
-* 🌐 1. Clone the official template: `git clone https://github.com/Monocade/Engine.git`
-* 📂 2. Open '**Template.sln**' in your favourite IDE such as [**Rider**](https://www.jetbrains.com/rider) or [**Visual Studio**](https://visualstudio.microsoft.com)
-* 🎮 3. Develop in the '**App**' project provided to you
-* 🚀 4. Build & launch your game
+* 🌐 1. Clone the official repository: `git clone https://github.com/Monocade/Engine.git`
+* 📂 2. Build '**Monocade.sln**' in your favourite IDE such as [Rider](https://www.jetbrains.com/rider) or [Visual Studio](https://visualstudio.microsoft.com)
+* 🚀 3. Run the editor application
+* 🎮 4. Build & launch your game
 
 
 <h2 id="platforms">🖥️ Cross-platform</h2>
@@ -48,6 +48,6 @@ Currently using these dependencies:
 
 <h2 id="license">📄 License</h2>
 
-* This project is licensed under the [MIT LICENSE](LICENSE.txt).
+* This project is licensed under the [MIT LICENSE](License.txt).
 
  
