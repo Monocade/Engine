@@ -5,9 +5,8 @@ namespace Engine
 {
     public static unsafe partial class SDL
     {
-        public enum GamepadAxis
+        public enum GamepadAxis : byte
         {
-            Invalid = -1,
             LeftHorizontal = 0,
             LeftVertical = 1,
             RightHorizontal = 2,

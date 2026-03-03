@@ -5,9 +5,8 @@ namespace Engine
 {
     public static unsafe partial class SDL
     {
-        public enum GamepadButton
+        public enum GamepadButton : byte
         {
-            Invalid = -1,
             South = 0,
             East = 1,
             West = 2,
