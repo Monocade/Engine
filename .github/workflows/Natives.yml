@@ -138,5 +138,5 @@ jobs:
           git submodule update --init --force --remote $SUBMODULE_PATH
   
           git add .gitmodules $SUBMODULE_PATH
-          git commit -m "Native" || echo "No changes"
+          git commit -m "Natives" || echo "No changes"
           git push origin ${{ github.ref_name }}
