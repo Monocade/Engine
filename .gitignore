@@ -1,4 +1,5 @@
 ## PROJECT
+.github/scripts/Dependencies/Modules/**/*
 *.DS_Store
 
 
