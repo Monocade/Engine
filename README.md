@@ -51,6 +51,6 @@ Currently using these dependencies:
 <h2 id="license">📄 License</h2>
 
 * This project is proprietary and not licensed for public use.
-* You can view the license [here](LICENSE.txt).
+* You can view the license [here](LICENSE.md).
 
  
