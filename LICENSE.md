@@ -3,7 +3,7 @@
 
 ### All Rights Reserved:
 
-Copyright © 2026 Lloyd J Howarth. All Rights Reserved.
+Copyright © Lloyd J Howarth. All Rights Reserved.
 
 
 ### Ownership:
