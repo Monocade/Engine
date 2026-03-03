@@ -1,0 +1,4 @@
+[submodule "Engine/Natives"]
+	path = Engine/Natives
+	url = https://github.com/Monocade/Engine
+	branch = Natives
