@@ -50,6 +50,7 @@ Currently using these dependencies:
 
 <h2 id="license">📄 License</h2>
 
-* This project is licensed under the [MIT LICENSE](License.txt).
+* This project is proprietary and not licensed for public use.
+* You can view the license [here](License.txt).
 
  
