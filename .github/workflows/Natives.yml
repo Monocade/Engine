@@ -1,0 +1,142 @@
+name: Build Natives
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build:
+    name: ${{ matrix.rid }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          # Windows x64
+          - platform: Windows
+            os: windows-latest
+            rid: win-x64
+            arch: x64
+
+          # Windows Arm64
+          - platform: Windows
+            os: windows-latest
+            rid: win-arm64
+            arch: arm64
+
+          # Linux x64
+          - platform: Linux
+            os: ubuntu-22.04
+            rid: linux-x64
+            arch: x86_64
+
+          # Linux Arm64
+          - platform: Linux
+            os: ubuntu-22.04-arm
+            rid: linux-arm64
+            arch: aarch64
+
+          # Mac x64
+          - platform: MacOS
+            os: macos-latest
+            rid: osx-x64
+            arch: x86_64
+
+          # Mac Arm64
+          - platform: MacOS
+            os: macos-latest
+            rid: osx-arm64
+            arch: arm64
+
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      # Build Artifacts
+      - name: Build ${{ matrix.platform }}
+        shell: bash
+        env:
+          PLATFORM: ${{ matrix.platform }}
+          ARCH: ${{ matrix.arch }}
+          RID: ${{ matrix.rid }}
+          OS: ${{ runner.os }}
+        run: |
+          chmod +x .github/scripts/${{ matrix.platform }}.sh
+          ./.github/scripts/${{ matrix.platform }}.sh
+      
+      # Upload Artifacts
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rid }}
+          path: Natives/**/*
+          if-no-files-found: error
+  
+  
+  # Publish
+  publish:
+    name: Natives
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          persist-credentials: true
+          fetch-depth: 0
+      
+      # Configure
+      - name: Configure
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      # Create Branch
+      - name: Create Branch
+        run: |
+          git push origin --delete Natives || true
+          git checkout --orphan Natives
+          git rm -rf . || true
+          git clean -fdx || true
+      
+      # Download Natives
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      
+      # Update Natives
+      - name: Update Natives
+        run: |
+          PLATFORMS=("win" "osx" "linux")
+          
+          for PLATFORM in "${PLATFORMS[@]}"; do
+            mkdir -p "$PLATFORM"
+            for SRC in artifacts/$PLATFORM-*; do
+              [ -d "$SRC" ] && cp -r "$SRC/." .
+            done
+          done
+          
+          git add . ':!artifacts'
+          git commit -m "Natives"
+          git push origin Natives --force
+
+      # Update Native References
+      - name: Update Native References
+        run: |
+          SUBMODULE_PATH="Natives"
+  
+          git checkout ${{ github.ref_name }}
+  
+          git submodule add -f -b Natives https://github.com/${{ github.repository }} $SUBMODULE_PATH || true
+          git submodule set-branch -b Natives -- $SUBMODULE_PATH
+          git submodule update --init --force --remote $SUBMODULE_PATH
+  
+          git add .gitmodules $SUBMODULE_PATH
+          git commit -m "Native" || echo "No changes"
+          git push origin ${{ github.ref_name }}
