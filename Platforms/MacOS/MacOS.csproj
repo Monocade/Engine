@@ -11,4 +11,20 @@
         <ProjectReference Include="$(SolutionDir)\Editor\Editor.csproj" />
     </ItemGroup>
 
+    <PropertyGroup>
+        <Architecture Condition="'$(RuntimeIdentifier)' == ''">$(NETCoreSdkRuntimeIdentifier)</Architecture>
+        <Architecture Condition="'$(RuntimeIdentifier)' != ''">$(RuntimeIdentifier)</Architecture>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Remove="$(SolutionDir)\Engine\Natives\**\*"/>
+        <Content Include="$(SolutionDir)\Engine\Natives\$(Architecture)\**\*">
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
+            <TargetPath>%(Filename)%(Extension)</TargetPath>
+            <Visible>true</Visible>
+        </Content>
+    </ItemGroup>
+
 </Project>
