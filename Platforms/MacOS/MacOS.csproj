@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="$(SolutionDir)\Source\Editor\Editor.csproj" />
+        <ProjectReference Include="$(SolutionDir)\Editor\Editor.csproj" />
     </ItemGroup>
 
 </Project>
