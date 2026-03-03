@@ -129,7 +129,7 @@ jobs:
       # Update Native References
       - name: Update Native References
         run: |
-          SUBMODULE_PATH="Natives"
+          SUBMODULE_PATH="Engine/Natives"
   
           git checkout ${{ github.ref_name }}
   
