@@ -1,6 +1,6 @@
 <div align="center">
 
-<img width="256" src="Icon.png">
+<img width="256" src="ICON.png">
 
 **MONOCADE**
 
