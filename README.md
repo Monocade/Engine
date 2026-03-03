@@ -43,6 +43,7 @@ Currently supports these platforms:
 Currently using these dependencies:
 * [DOTNET 10.0.103](https://github.com/dotnet/runtime)
 * [IMGUI 1.92.6](https://github.com/ocornut/imgui)
+* [JITTER 2.7.9](https://github.com/notgiven688/jitterphysics2)
 * [SDL 3.4.2](https://github.com/libsdl-org/SDL)
 
 
