@@ -3,7 +3,7 @@ using System;
 
 namespace Engine
 {
-    public static unsafe partial class SDL_Image
+    public static unsafe partial class SDL_image
     {
         // Load
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]

@@ -22,10 +22,10 @@ namespace Engine
             renderer = SDL.CreateRenderer(window, null);
             
             // Load Texture
-            texture = SDL_Image.LoadTexture(renderer, SDL.GetBasePath() + "Resources/Icon.png");
             
             // Load Surface
-            surface = SDL_Image.LoadSurface(SDL.GetBasePath() + "Resources/Icon.png");
+            surface = SDL_image.LoadSurface(SDL.GetBasePath() + "Resources/Icon.png");
+            texture = SDL.CreateTextureFromSurface(renderer, surface);
 
             if (texture == null)
             {
@@ -48,11 +48,6 @@ namespace Engine
 
                 SDL.SetRenderDrawColor(renderer, 255, 128, 128, 255);
                 SDL.RenderClear(renderer);
-                
-                // Draw Surface
-                SDL.Texture* temp = SDL.CreateTextureFromSurface(renderer, surface);
-                SDL.RenderTexture(renderer, temp, null, null);
-                SDL.DestroyTexture(temp);
                 
                 // Draw Texture
                 SDL.RenderTexture(renderer, texture, null, null);

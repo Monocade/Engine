@@ -13,6 +13,26 @@ namespace Engine
             return SDL_CreateSurface(width, height, format);
         }
         
+        // Create Surface From Texture
+        public static SDL.Surface* CreateSurfaceFromTexture(SDL.Renderer* renderer, SDL.Texture* texture)
+        {
+            SDL.GetTextureSize(texture, out float w, out float h);
+            {
+                var target = CreateTexture(renderer, SDL.PixelFormat.RGBA32, TextureAccess.Target, (int)w, (int)h);
+                {
+                    SetRenderTarget(renderer, target);
+                    RenderTexture(renderer, texture, null, null);
+        
+                    var surface = RenderReadPixels(renderer, null);
+        
+                    SetRenderTarget(renderer, null);
+                    DestroyTexture(target);
+                    
+                    return surface;
+                }
+            }
+        }
+        
         // Destroy Surface
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern void SDL_DestroySurface(SDL.Surface* surface);
