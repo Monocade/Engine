@@ -4,10 +4,10 @@ namespace Engine
 {
     public unsafe class Core
     {
-        private SDL.Renderer* renderer;
-        private SDL.Texture* texture;
-        private SDL.Window* window;
         private bool IsRunning = true;
+        
+        private SDL.Renderer* renderer;
+        private SDL.Window* window;
         
         public void Run()
         {
@@ -16,7 +16,8 @@ namespace Engine
                 throw new Exception("Failed to initialize");
             }
             
-            window = SDL.CreateWindow("Hello", 600, 400, SDL.WindowFlags.HighPixelDensity);
+            window = SDL.CreateWindow("Monocade", 600, 400, SDL.WindowFlags.HighPixelDensity);
+            renderer = SDL.CreateRenderer(window, null);
 
             while (IsRunning)
             {
@@ -31,12 +32,16 @@ namespace Engine
                         }
                     }
                 }
+
+                SDL.SetRenderDrawColor(renderer, 255, 128, 128, 255);
+                SDL.RenderClear(renderer);
+                
+                // Draw
+                
+                SDL.RenderPresent(renderer);
             }
-
-            var rect = new SDL.FRect();
-
-            SDL.RenderTexture(renderer, texture, &rect, null);
             
+            SDL.DestroyRenderer(renderer);
             SDL.DestroyWindow(window);
             SDL.Quit();
         }
