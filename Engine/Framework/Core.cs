@@ -12,12 +12,12 @@ namespace Engine
         public void Run()
         {
             if (!SDL.Init(SDL.InitFlags.Video)) throw new Exception("Failed to initialize SDL");
-            if (!SDL_ttf.Init()) throw new Exception("Failed to initialize TTF");
+            if (!SDL_Ttf.Init()) throw new Exception("Failed to initialize TTF");
             
             window = SDL.CreateWindow("Monocade", 800, 600, SDL.WindowFlags.HighPixelDensity);
             renderer = SDL.CreateRenderer(window, null);
             
-            SDL.Font* font = SDL_ttf.OpenFont(SDL.GetBasePath() + "/Resources/Fonts/Font.ttf", 32);
+            SDL.Font* font = SDL_Ttf.OpenFont(SDL.GetBasePath() + "/Resources/Fonts/Font.ttf", 32);
             if (font == null) throw new Exception($"Failed to load font: " + SDL.GetError());
             
             while (IsRunning)
@@ -37,7 +37,7 @@ namespace Engine
                 SDL.SetRenderDrawColor(renderer, 255, 128, 128, 255);
                 SDL.RenderClear(renderer);
 
-                SDL.Surface* surface = SDL_ttf.RenderTextSolid(font, "Hello world", new SDL.Color());
+                SDL.Surface* surface = SDL_Ttf.RenderTextSolid(font, "Hello world", new SDL.Color());
                 SDL.Texture* texture = SDL.CreateTextureFromSurface(renderer, surface);
                 SDL.SetTextureScaleMode(texture, SDL.ScaleMode.Pixel);
                 SDL.RenderTexture(renderer, texture, null, null);
