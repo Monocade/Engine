@@ -17,9 +17,8 @@ namespace Engine
             window = SDL.CreateWindow("Monocade", 800, 600, SDL.WindowFlags.HighPixelDensity);
             renderer = SDL.CreateRenderer(window, null);
             
-            string path = SDL.GetBasePath() + "/Resources/Fonts/Font.ttf";
-            SDL.Font* font = SDL_ttf.OpenFont(path, 32);
-            if (font == null) throw new Exception($"Failed to load font:  {path} " + SDL.GetError());
+            SDL.Font* font = SDL_ttf.OpenFont(SDL.GetBasePath() + "/Resources/Fonts/Font.ttf", 32);
+            if (font == null) throw new Exception($"Failed to load font: " + SDL.GetError());
             
             while (IsRunning)
             {
@@ -40,6 +39,7 @@ namespace Engine
 
                 SDL.Surface* surface = SDL_ttf.RenderTextSolid(font, "Hello world", new SDL.Color());
                 SDL.Texture* texture = SDL.CreateTextureFromSurface(renderer, surface);
+                SDL.SetTextureScaleMode(texture, SDL.ScaleMode.Pixel);
                 SDL.RenderTexture(renderer, texture, null, null);
                 
                 SDL.DestroySurface(surface);

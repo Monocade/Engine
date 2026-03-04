@@ -170,6 +170,38 @@ namespace Engine
             return TTF_GetFontLineSkip(font);
         }
         
+        // Set Font Style
+        [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
+        private static extern void TTF_SetFontStyle(SDL.Font* font, SDL.FontStyle style);
+        public static void SetFontStyle(SDL.Font* font, SDL.FontStyle style)
+        {
+            TTF_SetFontStyle(font, style);
+        }
+        
+        // Get Font Style
+        [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
+        private static extern SDL.FontStyle TTF_GetFontStyle(SDL.Font* font);
+        public static SDL.FontStyle GetFontStyle(SDL.Font* font)
+        {
+            return TTF_GetFontStyle(font);
+        }
+        
+        // Set Font Direction
+        [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
+        private static extern SDL.Bool TTF_SetFontDirection(SDL.Font* font, SDL.FontDirection direction);
+        public static bool SetFontDirection(SDL.Font* font, SDL.FontDirection direction)
+        {
+            return TTF_SetFontDirection(font, direction);
+        }
+        
+        // Get Font Direction
+        [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
+        private static extern SDL.FontDirection TTF_GetFontDirection(SDL.Font* font);
+        public static SDL.FontDirection GetFontDirection(SDL.Font* font)
+        {
+            return TTF_GetFontDirection(font);
+        }
+        
         // Get Font Number Faces
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern int TTF_GetNumFontFaces(SDL.Font* font);
