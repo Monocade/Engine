@@ -5,7 +5,7 @@ namespace Engine
 {
     public static unsafe partial class SDL_image
     {
-        // Load
+        // Load Surface
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern SDL.Surface* IMG_Load(byte* path);
         public static SDL.Surface* LoadSurface(string path)
@@ -16,14 +16,6 @@ namespace Engine
             {
                 return IMG_Load(utf8);
             }
-        }
-        
-        // Load IO
-        [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Surface* IMG_Load_IO(SDL.IOStream* stream, SDL.Bool close);
-        public static SDL.Surface* LoadSurfaceIO(SDL.IOStream* stream, bool close)
-        {
-            return IMG_Load_IO(stream, close);
         }
         
         // Load Texture
@@ -37,6 +29,14 @@ namespace Engine
             {
                 return IMG_LoadTexture(renderer, utf8);
             }
+        }
+        
+        // Load Surface IO
+        [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
+        private static extern SDL.Surface* IMG_Load_IO(SDL.IOStream* stream, SDL.Bool close);
+        public static SDL.Surface* LoadSurfaceIO(SDL.IOStream* stream, bool close)
+        {
+            return IMG_Load_IO(stream, close);
         }
         
         // Load Texture IO

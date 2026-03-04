@@ -5,7 +5,7 @@ namespace Engine
 {
     public static unsafe partial class SDL_image
     {
-        // Save
+        // Save Surface
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern SDL.Bool IMG_Save(SDL.Surface* surface, byte* path);
         public static bool SaveSurface(SDL.Surface* surface, string path)
