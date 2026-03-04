@@ -201,6 +201,22 @@ namespace Engine
         {
             return TTF_GetFontDirection(font);
         }
+
+        // Set Font Outline
+        [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
+        private static extern SDL.Bool TTF_SetFontOutline(SDL.Font* font, int outline);
+        public static bool SetFontOutline(SDL.Font* font, int outline)
+        {
+            return TTF_SetFontOutline(font, outline);
+        }
+        
+        // Get Font Outline
+        [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
+        private static extern int TTF_GetFontOutline(SDL.Font* font);
+        public static int GetFontOutline(SDL.Font* font)
+        {
+            return TTF_GetFontOutline(font);
+        }
         
         // Get Font Number Faces
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
