@@ -21,7 +21,7 @@ namespace Engine
         {
             if (data == null || data.Length <= 0)
             {
-                return Array.Empty<byte>();
+                return [ 0 ];
             }
         
             return System.Text.Encoding.UTF8.GetBytes(data + '\0');

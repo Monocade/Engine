@@ -152,11 +152,14 @@ namespace Engine
         // Update Texture
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern SDL.Bool SDL_UpdateTexture(SDL.Texture* texture, SDL.Rect* rect, IntPtr pixels, int pitch);
-        public static bool UpdateTexture(SDL.Texture* texture, SDL.Rect rect, byte[] pixels, int width)
+        public static bool UpdateTexture(SDL.Texture* texture, SDL.Rect? rect, byte[] pixels, int width)
         {
             fixed (byte* p = pixels)
             {
-                return SDL_UpdateTexture(texture, &rect, (IntPtr)p, width * 4);
+                var r = rect.GetValueOrDefault();
+                var rv = rect.HasValue ? &r : null;
+                
+                return SDL_UpdateTexture(texture, rv, (IntPtr)p, width * 4);
             }
         }
     }

@@ -109,9 +109,12 @@ namespace Engine
         // Set Render Viewport
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern SDL.Bool SDL_SetRenderViewport(SDL.Renderer* renderer, SDL.Rect* rect);
-        public static bool SetRenderViewport(SDL.Renderer* renderer, SDL.Rect rect)
+        public static bool SetRenderViewport(SDL.Renderer* renderer, SDL.Rect? rect)
         {
-            return SDL_SetRenderViewport(renderer, &rect);
+            var r = rect.GetValueOrDefault();
+            var rv = rect.HasValue ? &r : null;
+            
+            return SDL_SetRenderViewport(renderer, rv);
         }
         
         // Get Render Viewport
@@ -141,9 +144,12 @@ namespace Engine
         // Set Render Clip Rect
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern SDL.Bool SDL_SetRenderClipRect(SDL.Renderer* renderer, SDL.Rect* rect);
-        public static bool SetRenderClipRect(SDL.Renderer* renderer, SDL.Rect rect)
+        public static bool SetRenderClipRect(SDL.Renderer* renderer, SDL.Rect? rect)
         {
-            return SDL_SetRenderClipRect(renderer, &rect);
+            var r = rect.GetValueOrDefault();
+            var rv = rect.HasValue ? &r : null;
+            
+            return SDL_SetRenderClipRect(renderer, rv);
         }
         
         // Get Render Clip Rect
@@ -293,9 +299,12 @@ namespace Engine
         // Render Rect
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern SDL.Bool SDL_RenderRect(SDL.Renderer* renderer, SDL.FRect* rect);
-        public static bool RenderRect(SDL.Renderer* renderer, SDL.FRect rect)
+        public static bool RenderRect(SDL.Renderer* renderer, SDL.FRect? rect)
         {
-            return SDL_RenderRect(renderer, &rect);
+            var r = rect.GetValueOrDefault();
+            var rv = rect.HasValue ? &r : null;
+            
+            return SDL_RenderRect(renderer, rv);
         }
         
         // Render Rects
@@ -309,9 +318,12 @@ namespace Engine
         // Render Fill Rect
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern SDL.Bool SDL_RenderFillRect(SDL.Renderer* renderer, SDL.FRect* rect);
-        public static bool RenderFillRect(SDL.Renderer* renderer, SDL.FRect rect)
+        public static bool RenderFillRect(SDL.Renderer* renderer, SDL.FRect? rect)
         {
-            return SDL_RenderFillRect(renderer, &rect);
+            var r = rect.GetValueOrDefault();
+            var rv = rect.HasValue ? &r : null;
+            
+            return SDL_RenderFillRect(renderer, rv);
         }
         
         // Render Fill Rects
@@ -325,9 +337,15 @@ namespace Engine
         // Render Texture
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern SDL.Bool SDL_RenderTexture(SDL.Renderer* renderer, SDL.Texture* texture, SDL.FRect* src, SDL.FRect* dst);
-        public static bool RenderTexture(SDL.Renderer* renderer, SDL.Texture* texture, SDL.FRect src, SDL.FRect dst)
+        public static bool RenderTexture(SDL.Renderer* renderer, SDL.Texture* texture, SDL.FRect? src, SDL.FRect? dst)
         {
-            return SDL_RenderTexture(renderer, texture, &src, &dst);
+            var s = src.GetValueOrDefault();
+            var sv = src.HasValue ? &s : null;
+        
+            var d = dst.GetValueOrDefault();
+            var dv = dst.HasValue ? &d : null;
+            
+            return SDL_RenderTexture(renderer, texture, sv, dv);
         }
         
         // Render Geometry
@@ -377,9 +395,12 @@ namespace Engine
         // Render Read Pixels
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern SDL.Surface* SDL_RenderReadPixels(SDL.Renderer* renderer, SDL.Rect* rect);
-        public static SDL.Surface* RenderReadPixels(SDL.Renderer* renderer, SDL.Rect rect)
+        public static SDL.Surface* RenderReadPixels(SDL.Renderer* renderer, SDL.Rect? rect)
         {
-            return SDL_RenderReadPixels(renderer, &rect);
+            var r = rect.GetValueOrDefault();
+            var rv = rect.HasValue ? &r : null;
+            
+            return SDL_RenderReadPixels(renderer, rv);
         }
         
         // Render Present
