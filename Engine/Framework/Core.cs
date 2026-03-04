@@ -4,6 +4,8 @@ namespace Engine
 {
     public unsafe class Core
     {
+        private SDL.Renderer* renderer;
+        private SDL.Texture* texture;
         private SDL.Window* window;
         private bool IsRunning = true;
         
@@ -30,6 +32,10 @@ namespace Engine
                     }
                 }
             }
+
+            var rect = new SDL.FRect();
+
+            SDL.RenderTexture(renderer, texture, &rect, null);
             
             SDL.DestroyWindow(window);
             SDL.Quit();
