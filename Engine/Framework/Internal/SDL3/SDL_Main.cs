@@ -33,7 +33,7 @@ namespace Engine
             return SDL_EnterAppMainCallbacks(argc, argv, init, iterate, events, quit);
         }
         
-        // SDL Run App
+        // Run App
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern int SDL_RunApp(int argc, IntPtr argv, delegate* unmanaged[Cdecl]<int, IntPtr, int> main, IntPtr reserved);
         public static int RunApp(int argc, IntPtr argv, delegate* unmanaged[Cdecl]<int, IntPtr, int> main, IntPtr reserved)
