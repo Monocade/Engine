@@ -18,7 +18,7 @@ Created by Lloyd J Howarth
 
 <h2 id="overview">🔍 Overview</h2>
 
-Monocade is an all-in-one game engine designed for complete beginners
+Monocade is an all-in-one game engine designed for a fun game making experience
 
 > Do not use this branch for development
 
@@ -43,8 +43,8 @@ Currently supports these platforms:
 Currently using these dependencies:
 * [DOTNET 10.0.103](https://github.com/dotnet/runtime)
 * [IMGUI 1.92.6](https://github.com/ocornut/imgui)
-* [OPENGL 3.3](https://www.opengl.org)
 * [BOX2D 3.1.1](https://github.com/erincatto/box2d)
+* [OPENGL 3.3](https://www.opengl.org)
 * [SDL 3.4.2](https://github.com/libsdl-org/SDL)
 
 
