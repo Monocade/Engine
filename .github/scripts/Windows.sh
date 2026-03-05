@@ -42,7 +42,8 @@ BOX2D()
   cmake --build . --config Release
   cmake --install . --config Release
   
-  find "$INSTALLPATH" -type f \( -name "*.so" -o -name "*.dylib" -o -name "*.dll" \)
+  mkdir -p "$NATIVES_DIR/$RID"
+  cp "$INSTALLPATH/bin/box2d.dll" "$NATIVES_DIR/$RID/box2d.dll"
 }
 
 IMGUI()
