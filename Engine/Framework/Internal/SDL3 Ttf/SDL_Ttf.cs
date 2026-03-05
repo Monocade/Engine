@@ -218,7 +218,7 @@ namespace Engine
             return TTF_GetFontOutline(font);
         }
         
-        // Get Font Number Faces
+        // Get Font Number Of Faces
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
         private static extern int TTF_GetNumFontFaces(SDL.Font* font);
         public static int GetFontNumberOfFaces(SDL.Font* font)
