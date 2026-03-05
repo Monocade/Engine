@@ -11,7 +11,7 @@ source "$DEPENDENCIES_DIR/Methods.sh"
 rm -rf "$NATIVES_DIR"
 mkdir -p "$NATIVES_DIR"
 
-MODULES=("SDL" "SDL_IMAGE" "SDL_MIXER" "SDL_TTF")
+MODULES=("IMGUI" "SDL" "SDL_IMAGE" "SDL_MIXER" "SDL_TTF")
 
 ENVIRONMENT()
 {
@@ -29,6 +29,33 @@ ENVIRONMENT()
       libasound2-dev libpulse-dev libaudio-dev libfribidi-dev libjack-dev libsndio-dev \
       libdbus-1-dev libibus-1.0-dev libudev-dev libpipewire-0.3-dev libwayland-dev \
       libdecor-0-dev liburing-dev
+}
+
+IMGUI()
+{
+  Github "IMGUI" "https://github.com/cimgui/cimgui.git" ""
+  
+  cd "$MODULES_DIR/IMGUI" || exit
+  BUILDPATH="$MODULES_DIR/IMGUI/build_$RID"
+  INSTALLPATH="$MODULES_DIR/IMGUI/install_$RID"
+  rm -rf "$BUILDPATH" "$INSTALLPATH"
+  mkdir -p "$BUILDPATH" "$INSTALLPATH"
+  cd "$BUILDPATH" || exit
+
+  cmake .. -G Ninja \
+    -DCMAKE_SYSTEM_PROCESSOR=$ARCH \
+    -DCMAKE_C_COMPILER=$CC \
+    -DCMAKE_CXX_COMPILER=$CXX \
+    -DCMAKE_SYSTEM_NAME=Linux \
+    -DIMGUI_STATIC=no \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCMAKE_INSTALL_PREFIX="$INSTALLPATH"
+
+  cmake --build . --config Release
+  cmake --install . --config Release
+  
+  find "$INSTALLPATH" -type f \( -name "*.so" -o -name "*.dylib" -o -name "*.dll" \)
 }
 
 SDL()

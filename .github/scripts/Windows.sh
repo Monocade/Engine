@@ -11,11 +11,35 @@ source "$DEPENDENCIES_DIR/Methods.sh"
 rm -rf "$NATIVES_DIR"
 mkdir -p "$NATIVES_DIR"
 
-MODULES=("SDL" "SDL_IMAGE" "SDL_MIXER" "SDL_TTF")
+MODULES=("IMGUI" "SDL" "SDL_IMAGE" "SDL_MIXER" "SDL_TTF")
 
 ENVIRONMENT()
 {
   echo "Setting up windows environment..."
+}
+
+IMGUI()
+{
+  Github "IMGUI" "https://github.com/cimgui/cimgui.git" ""
+  
+  cd "$MODULES_DIR/IMGUI" || exit
+  BUILDPATH="$MODULES_DIR/IMGUI/build_$RID"
+  INSTALLPATH="$MODULES_DIR/IMGUI/install_$RID"
+  rm -rf "$BUILDPATH" "$INSTALLPATH"
+  mkdir -p "$BUILDPATH" "$INSTALLPATH"
+  cd "$BUILDPATH" || exit
+
+  cmake .. -G "Visual Studio 17 2022" \
+    -A $ARCH \
+    -DIMGUI_STATIC=no \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCMAKE_INSTALL_PREFIX="$INSTALLPATH"
+
+  cmake --build . --config Release
+  cmake --install . --config Release
+  
+  find "$INSTALLPATH" -type f \( -name "*.so" -o -name "*.dylib" -o -name "*.dll" \)
 }
 
 SDL()
