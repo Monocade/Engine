@@ -55,7 +55,8 @@ IMGUI()
   cmake --build . --config Release
   cmake --install . --config Release
   
-  find "$INSTALLPATH" -type f \( -name "*.so" -o -name "*.dylib" -o -name "*.dll" \)
+  mkdir -p "$NATIVES_DIR/$RID"
+  cp "$INSTALLPATH/cimgui.so" "$NATIVES_DIR/$RID/cimgui.so"
 }
 
 SDL()
@@ -107,8 +108,8 @@ SDL_IMAGE()
     -DSDLIMAGE_BMP=ON \
     -DSDLIMAGE_JPG=ON \
     -DSDLIMAGE_PNG=ON \
+    -DSDLIMAGE_WEBP=ON \
     -DSDLIMAGE_AVIF=OFF \
-    -DSDLIMAGE_WEBP=OFF \
     -DSDLIMAGE_GIF=OFF \
     -DSDLIMAGE_JXL=OFF \
     -DSDLIMAGE_LBM=OFF \
