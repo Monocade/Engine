@@ -11,11 +11,38 @@ source "$DEPENDENCIES_DIR/Methods.sh"
 rm -rf "$NATIVES_DIR"
 mkdir -p "$NATIVES_DIR"
 
-MODULES=("IMGUI" "SDL" "SDL_IMAGE" "SDL_MIXER" "SDL_TTF")
+MODULES=("BOX2D" "IMGUI" "SDL" "SDL_IMAGE" "SDL_MIXER" "SDL_TTF")
 
 ENVIRONMENT()
 {
   echo "Setting up windows environment..."
+}
+
+BOX2D()
+{
+  Github "BOX2D" "https://github.com/erincatto/box2d.git" ""
+  
+  cd "$MODULES_DIR/BOX2D" || exit
+  BUILDPATH="$MODULES_DIR/BOX2D/build_$RID"
+  INSTALLPATH="$MODULES_DIR/BOX2D/install_$RID"
+  rm -rf "$BUILDPATH" "$INSTALLPATH"
+  mkdir -p "$BUILDPATH" "$INSTALLPATH"
+  cd "$BUILDPATH" || exit
+
+  cmake .. -G "Visual Studio 17 2022" \
+    -A $ARCH \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBOX2D_SAMPLES=OFF \
+    -DBOX2D_DOCS=OFF \
+    -DBOX2D_BENCHMARKS=OFF \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCMAKE_INSTALL_PREFIX="$INSTALLPATH"
+
+  cmake --build . --config Release
+  cmake --install . --config Release
+  
+  find "$INSTALLPATH" -type f \( -name "*.so" -o -name "*.dylib" -o -name "*.dll" \)
 }
 
 IMGUI()
