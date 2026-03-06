@@ -58,7 +58,7 @@ namespace Engine
                     }
                 }
 
-                SDL.SetRenderDrawColor(renderer, 255, 128, 128, 255);
+                SDL.SetRenderDrawColor(renderer, 0, 0, 0, 255);
                 SDL.RenderClear(renderer);
                 
                 SDL.RenderPresent(renderer);
