@@ -13,7 +13,7 @@ namespace Engine
             public ulong timestamp;
             public uint gamepadID;
             public SDL.GamepadButton button;
-            public SDL.Bool down;
+            public Utils.Bool down;
             private byte padding1;
             private byte padding2;
         }

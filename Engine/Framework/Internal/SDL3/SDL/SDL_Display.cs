@@ -34,12 +34,12 @@ namespace Engine
         private static extern byte* SDL_GetDisplayName(uint displayID);
         public static string GetDisplayName(uint displayID)
         {
-            return SDL.Utf8ToString(SDL_GetDisplayName(displayID));
+            return Utils.Utf8ToString(SDL_GetDisplayName(displayID));
         }
         
         // Get Display Bounds
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetDisplayBounds(uint displayID, out SDL.Rect rect);
+        private static extern Utils.Bool SDL_GetDisplayBounds(uint displayID, out SDL.Rect rect);
         public static bool GetDisplayBounds(uint displayID, out SDL.Rect rect)
         {
             return SDL_GetDisplayBounds(displayID, out rect);
@@ -47,7 +47,7 @@ namespace Engine
         
         // Get Display Usable Bounds
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetDisplayUsableBounds(uint displayID, out SDL.Rect rect);
+        private static extern Utils.Bool SDL_GetDisplayUsableBounds(uint displayID, out SDL.Rect rect);
         public static bool GetDisplayUsableBounds(uint displayID, out SDL.Rect rect)
         {
             return SDL_GetDisplayUsableBounds(displayID, out rect);

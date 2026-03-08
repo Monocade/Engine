@@ -10,7 +10,7 @@ namespace Engine
         private static extern SDL.Window* SDL_CreateWindow(byte* title, int w, int h, SDL.WindowFlags flags);
         public static SDL.Window* CreateWindow(string title, int w, int h, SDL.WindowFlags flags)
         {
-            var bytes = SDL.StringToUtf8(title);
+            var bytes = Utils.StringToUtf8(title);
 
             fixed (byte* utf8 = bytes)
             {
@@ -44,7 +44,7 @@ namespace Engine
         
         // Set Window Icon
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetWindowIcon(SDL.Window* window, SDL.Surface* surface);
+        private static extern Utils.Bool SDL_SetWindowIcon(SDL.Window* window, SDL.Surface* surface);
         public static bool SetWindowIcon(SDL.Window* window, SDL.Surface* surface)
         {
             return SDL_SetWindowIcon(window, surface);
@@ -60,7 +60,7 @@ namespace Engine
         
         // Get Window Safe Area
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetWindowSafeArea(SDL.Window* window, out SDL.Rect rect);
+        private static extern Utils.Bool SDL_GetWindowSafeArea(SDL.Window* window, out SDL.Rect rect);
         public static bool GetWindowSafeArea(SDL.Window* window, out SDL.Rect rect)
         {
             return SDL_GetWindowSafeArea(window, out rect);
@@ -68,7 +68,7 @@ namespace Engine
         
         // Get Window Size In Pixels
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetWindowSizeInPixels(SDL.Window* window, out int w, out int h);
+        private static extern Utils.Bool SDL_GetWindowSizeInPixels(SDL.Window* window, out int w, out int h);
         public static bool GetWindowSizeInPixels(SDL.Window* window, out int w, out int h)
         {
             return SDL_GetWindowSizeInPixels(window, out w, out h);
@@ -76,7 +76,7 @@ namespace Engine
         
         // Get Window Borders Size
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetWindowBordersSize(SDL.Window* window, out int top, out int left, out int bottom, out int right);
+        private static extern Utils.Bool SDL_GetWindowBordersSize(SDL.Window* window, out int top, out int left, out int bottom, out int right);
         public static bool GetWindowBordersSize(SDL.Window* window, out int top, out int left, out int bottom, out int right)
         {
             return SDL_GetWindowBordersSize(window, out top, out left, out bottom, out right);
@@ -100,10 +100,10 @@ namespace Engine
         
         // Set Window Title
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetWindowTitle(SDL.Window* window, byte* title);
+        private static extern Utils.Bool SDL_SetWindowTitle(SDL.Window* window, byte* title);
         public static bool SetWindowTitle(SDL.Window* window, string title)
         {
-            var bytes = SDL.StringToUtf8(title);
+            var bytes = Utils.StringToUtf8(title);
 
             fixed (byte* utf8 = bytes)
             {
@@ -116,12 +116,12 @@ namespace Engine
         private static extern byte* SDL_GetWindowTitle(SDL.Window* window);
         public static string GetWindowTitle(SDL.Window* window)
         {
-            return SDL.Utf8ToString(SDL_GetWindowTitle(window));
+            return Utils.Utf8ToString(SDL_GetWindowTitle(window));
         }
         
         // Set Window Position
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetWindowPosition(SDL.Window* window, int x, int y);
+        private static extern Utils.Bool SDL_SetWindowPosition(SDL.Window* window, int x, int y);
         public static bool SetWindowPosition(SDL.Window* window, int x, int y)
         {
             return SDL_SetWindowPosition(window, x, y);
@@ -129,7 +129,7 @@ namespace Engine
         
         // Get Window Position
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetWindowPosition(SDL.Window* window, out int x, out int y);
+        private static extern Utils.Bool SDL_GetWindowPosition(SDL.Window* window, out int x, out int y);
         public static bool GetWindowPosition(SDL.Window* window, out int x, out int y)
         {
             return SDL_GetWindowPosition(window, out x, out y);
@@ -137,7 +137,7 @@ namespace Engine
         
         // Set Window Size
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetWindowSize(SDL.Window* window, int w, int h);
+        private static extern Utils.Bool SDL_SetWindowSize(SDL.Window* window, int w, int h);
         public static bool SetWindowSize(SDL.Window* window, int w, int h)
         {
             return SDL_SetWindowSize(window, w, h);
@@ -145,7 +145,7 @@ namespace Engine
         
         // Get Window Size
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetWindowSize(SDL.Window* window, out int w, out int h);
+        private static extern Utils.Bool SDL_GetWindowSize(SDL.Window* window, out int w, out int h);
         public static bool GetWindowSize(SDL.Window* window, out int w, out int h)
         {
             return SDL_GetWindowSize(window, out w, out h);
@@ -153,7 +153,7 @@ namespace Engine
         
         // Set Window Aspect Ratio
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetWindowAspectRatio(SDL.Window* window, float min, float max);
+        private static extern Utils.Bool SDL_SetWindowAspectRatio(SDL.Window* window, float min, float max);
         public static bool SetWindowAspectRatio(SDL.Window* window, float min, float max)
         {
             return SDL_SetWindowAspectRatio(window, min, max);
@@ -161,7 +161,7 @@ namespace Engine
         
         // Get Window Aspect Ratio
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetWindowAspectRatio(SDL.Window* window, out float min, out float max);
+        private static extern Utils.Bool SDL_GetWindowAspectRatio(SDL.Window* window, out float min, out float max);
         public static bool GetWindowAspectRatio(SDL.Window* window, out float min, out float max)
         {
             return SDL_GetWindowAspectRatio(window, out min, out max);
@@ -169,7 +169,7 @@ namespace Engine
         
         // Set Window Minimum Size
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetWindowMinimumSize(SDL.Window* window, int w, int h);
+        private static extern Utils.Bool SDL_SetWindowMinimumSize(SDL.Window* window, int w, int h);
         public static bool SetWindowMinimumSize(SDL.Window* window, int w, int h)
         {
             return SDL_SetWindowMinimumSize(window, w, h);
@@ -177,7 +177,7 @@ namespace Engine
         
         // Get Window Minimum Size
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetWindowMinimumSize(SDL.Window* window, out int w, out int h);
+        private static extern Utils.Bool SDL_GetWindowMinimumSize(SDL.Window* window, out int w, out int h);
         public static bool GetWindowMinimumSize(SDL.Window* window, out int w, out int h)
         {
             return SDL_GetWindowMinimumSize(window, out w, out h);
@@ -185,7 +185,7 @@ namespace Engine
         
         // Set Window Maximum Size
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetWindowMaximumSize(SDL.Window* window, int w, int h);
+        private static extern Utils.Bool SDL_SetWindowMaximumSize(SDL.Window* window, int w, int h);
         public static bool SetWindowMaximumSize(SDL.Window* window, int w, int h)
         {
             return SDL_SetWindowMaximumSize(window, w, h);
@@ -193,7 +193,7 @@ namespace Engine
         
         // Get Window Maximum Size
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetWindowMaximumSize(SDL.Window* window, out int w, out int h);
+        private static extern Utils.Bool SDL_GetWindowMaximumSize(SDL.Window* window, out int w, out int h);
         public static bool GetWindowMaximumSize(SDL.Window* window, out int w, out int h)
         {
             return SDL_GetWindowMaximumSize(window, out w, out h);
@@ -201,7 +201,7 @@ namespace Engine
         
         // Set Window Resizable
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetWindowResizable(SDL.Window* window, SDL.Bool resizable);
+        private static extern Utils.Bool SDL_SetWindowResizable(SDL.Window* window, Utils.Bool resizable);
         public static bool SetWindowResizable(SDL.Window* window, bool resizable)
         {
             return SDL_SetWindowResizable(window, resizable);
@@ -209,7 +209,7 @@ namespace Engine
         
         // Set Window Bordered
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetWindowBordered(SDL.Window* window, SDL.Bool bordered);
+        private static extern Utils.Bool SDL_SetWindowBordered(SDL.Window* window, Utils.Bool bordered);
         public static bool SetWindowBordered(SDL.Window* window, bool bordered)
         {
             return SDL_SetWindowBordered(window, bordered);
@@ -217,7 +217,7 @@ namespace Engine
         
         // Set Window Fullscreen
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetWindowFullscreen(SDL.Window* window, SDL.Bool fullscreen);
+        private static extern Utils.Bool SDL_SetWindowFullscreen(SDL.Window* window, Utils.Bool fullscreen);
         public static bool SetWindowFullscreen(SDL.Window* window, bool fullscreen)
         {
             return SDL_SetWindowFullscreen(window, fullscreen);
@@ -225,7 +225,7 @@ namespace Engine
         
         // Set Window Always On Top
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetWindowAlwaysOnTop(SDL.Window* window, SDL.Bool enabled);
+        private static extern Utils.Bool SDL_SetWindowAlwaysOnTop(SDL.Window* window, Utils.Bool enabled);
         public static bool SetWindowAlwaysOnTop(SDL.Window* window, bool enabled)
         {
             return SDL_SetWindowAlwaysOnTop(window, enabled);
@@ -233,7 +233,7 @@ namespace Engine
         
         // Set Window Focusable
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetWindowFocusable(SDL.Window* window, SDL.Bool focusable);
+        private static extern Utils.Bool SDL_SetWindowFocusable(SDL.Window* window, Utils.Bool focusable);
         public static bool SetWindowFocusable(SDL.Window* window, bool focusable)
         {
             return SDL_SetWindowFocusable(window, focusable);
@@ -241,7 +241,7 @@ namespace Engine
         
         // Show Window
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_ShowWindow(SDL.Window* window);
+        private static extern Utils.Bool SDL_ShowWindow(SDL.Window* window);
         public static bool ShowWindow(SDL.Window* window)
         {
             return SDL_ShowWindow(window);
@@ -249,7 +249,7 @@ namespace Engine
         
         // Hide Window
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_HideWindow(SDL.Window* window);
+        private static extern Utils.Bool SDL_HideWindow(SDL.Window* window);
         public static bool HideWindow(SDL.Window* window)
         {
             return SDL_HideWindow(window);
@@ -257,7 +257,7 @@ namespace Engine
         
         // Raise Window
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RaiseWindow(SDL.Window* window);
+        private static extern Utils.Bool SDL_RaiseWindow(SDL.Window* window);
         public static bool RaiseWindow(SDL.Window* window)
         {
             return SDL_RaiseWindow(window);
@@ -265,7 +265,7 @@ namespace Engine
         
         // Maximize Window
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_MaximizeWindow(SDL.Window* window);
+        private static extern Utils.Bool SDL_MaximizeWindow(SDL.Window* window);
         public static bool MaximizeWindow(SDL.Window* window)
         {
             return SDL_MaximizeWindow(window);
@@ -273,7 +273,7 @@ namespace Engine
         
         // Minimize Window
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_MinimizeWindow(SDL.Window* window);
+        private static extern Utils.Bool SDL_MinimizeWindow(SDL.Window* window);
         public static bool MinimizeWindow(SDL.Window* window)
         {
             return SDL_MinimizeWindow(window);
@@ -281,7 +281,7 @@ namespace Engine
         
         // Restore Window
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RestoreWindow(SDL.Window* window);
+        private static extern Utils.Bool SDL_RestoreWindow(SDL.Window* window);
         public static bool RestoreWindow(SDL.Window* window)
         {
             return SDL_RestoreWindow(window);

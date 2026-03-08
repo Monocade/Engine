@@ -7,10 +7,10 @@ namespace Engine
     {
         // Open URL
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_OpenURL(byte* url);
+        private static extern Utils.Bool SDL_OpenURL(byte* url);
         public static bool OpenURL(string url)
         {
-            var bytes = StringToUtf8(url);
+            var bytes = Utils.StringToUtf8(url);
 
             fixed (byte* utf8 = bytes)
             {

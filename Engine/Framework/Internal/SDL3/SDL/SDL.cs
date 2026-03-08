@@ -11,7 +11,7 @@ namespace Engine
         
         // Init
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_Init(SDL.InitFlags flags);
+        private static extern Utils.Bool SDL_Init(SDL.InitFlags flags);
         public static bool Init(SDL.InitFlags flags)
         {
             return SDL_Init(flags);

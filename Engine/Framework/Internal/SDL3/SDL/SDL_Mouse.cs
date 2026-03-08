@@ -7,7 +7,7 @@ namespace Engine
     {
         // Has Mouse
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_HasMouse();
+        private static extern Utils.Bool SDL_HasMouse();
         public static bool HasMouse()
         {
             return SDL_HasMouse();
@@ -31,7 +31,7 @@ namespace Engine
         
         // Show Cursor
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_ShowCursor();
+        private static extern Utils.Bool SDL_ShowCursor();
         public static bool ShowCursor()
         {
             return SDL_ShowCursor();
@@ -39,7 +39,7 @@ namespace Engine
         
         // Hide Cursor
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_HideCursor();
+        private static extern Utils.Bool SDL_HideCursor();
         public static bool HideCursor()
         {
             return SDL_HideCursor();

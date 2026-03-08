@@ -10,7 +10,7 @@ namespace Engine
         private static extern byte* SDL_GetBasePath();
         public static string GetBasePath()
         {
-            return SDL.Utf8ToString(SDL_GetBasePath());
+            return Utils.Utf8ToString(SDL_GetBasePath());
         }
     }
 }

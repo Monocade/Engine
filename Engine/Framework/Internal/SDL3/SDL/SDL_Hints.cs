@@ -7,11 +7,11 @@ namespace Engine
     {
         // Set Hint
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetHint(byte* name, byte* value);
+        private static extern Utils.Bool SDL_SetHint(byte* name, byte* value);
         public static bool SetHint(string name, string value)
         {
-            var nameBytes = SDL.StringToUtf8(name);
-            var valueBytes = SDL.StringToUtf8(value);
+            var nameBytes = Utils.StringToUtf8(name);
+            var valueBytes = Utils.StringToUtf8(value);
 
             fixed (byte* nameUtf8 = nameBytes)
             fixed (byte* valueUtf8 = valueBytes)
@@ -25,11 +25,11 @@ namespace Engine
         private static extern byte* SDL_GetHint(byte* name);
         public static string GetHint(string name)
         {
-            var nameBytes = SDL.StringToUtf8(name);
+            var nameBytes = Utils.StringToUtf8(name);
 
             fixed (byte* nameUtf8 = nameBytes)
             {
-                return SDL.Utf8ToString(SDL_GetHint(nameUtf8));
+                return Utils.Utf8ToString(SDL_GetHint(nameUtf8));
             }
         }
     }

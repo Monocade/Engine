@@ -11,7 +11,7 @@ namespace Engine
         
         // Init
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_Init();
+        private static extern Utils.Bool MIX_Init();
         public static bool Init()
         {
             return MIX_Init();

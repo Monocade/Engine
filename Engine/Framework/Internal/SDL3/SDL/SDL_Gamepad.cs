@@ -7,7 +7,7 @@ namespace Engine
     {
         // Has Gamepad
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_HasGamepad();
+        private static extern Utils.Bool SDL_HasGamepad();
         public static bool HasGamepad()
         {
             return SDL_HasGamepad();
@@ -71,7 +71,7 @@ namespace Engine
         
         // Rumble Gamepad
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RumbleGamepad(SDL.Gamepad* gamepad, ushort left, ushort right, uint ms);
+        private static extern Utils.Bool SDL_RumbleGamepad(SDL.Gamepad* gamepad, ushort left, ushort right, uint ms);
         public static bool RumbleGamepad(SDL.Gamepad* gamepad, ushort left, ushort right, uint ms)
         {
             return SDL_RumbleGamepad(gamepad, left, right, ms);
@@ -79,7 +79,7 @@ namespace Engine
 
         // Rumble Gamepad Triggers
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RumbleGamepadTriggers(SDL.Gamepad* gamepad, ushort left, ushort right, uint ms);
+        private static extern Utils.Bool SDL_RumbleGamepadTriggers(SDL.Gamepad* gamepad, ushort left, ushort right, uint ms);
         public static bool RumbleGamepadTriggers(SDL.Gamepad* gamepad, ushort left, ushort right, uint ms)
         {
             return SDL_RumbleGamepadTriggers(gamepad, left, right, ms);

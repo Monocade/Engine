@@ -43,7 +43,7 @@ namespace Engine
         
         // Lock Surface
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_LockSurface(SDL.Surface* surface);
+        private static extern Utils.Bool SDL_LockSurface(SDL.Surface* surface);
         public static bool LockSurface(SDL.Surface* surface)
         {
             return SDL_LockSurface(surface);
@@ -59,7 +59,7 @@ namespace Engine
         
         // Flip Surface
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_FlipSurface(SDL.Surface* surface, SDL.FlipMode mode);
+        private static extern Utils.Bool SDL_FlipSurface(SDL.Surface* surface, SDL.FlipMode mode);
         public static bool FlipSurface(SDL.Surface* surface, SDL.FlipMode mode)
         {
             return SDL_FlipSurface(surface, mode);
@@ -91,7 +91,7 @@ namespace Engine
         
         // Clear Surface
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_ClearSurface(SDL.Surface* surface, float r, float g, float b, float a);
+        private static extern Utils.Bool SDL_ClearSurface(SDL.Surface* surface, float r, float g, float b, float a);
         public static bool ClearSurface(SDL.Surface* surface, float r, float g, float b, float a)
         {
             return SDL_ClearSurface(surface, r, g, b, a);

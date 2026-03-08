@@ -14,7 +14,7 @@ namespace Engine
             public uint windowID;
             public uint mouseID;
             public byte button;
-            public SDL.Bool down;
+            public Utils.Bool down;
             private byte clicks;
             private byte padding;
             public float x;

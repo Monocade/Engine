@@ -7,7 +7,7 @@ namespace Engine
     {
         // Has Keyboard
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_HasKeyboard();
+        private static extern Utils.Bool SDL_HasKeyboard();
         public static bool HasKeyboard()
         {
             return SDL_HasKeyboard();
@@ -47,8 +47,8 @@ namespace Engine
         
         // Get Key Code From Scan Code
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.KeyCode SDL_GetKeyFromScancode(SDL.ScanCode scanCode, SDL.KeyModifier keyModifier, SDL.Bool keyEvent);
-        public static SDL.KeyCode GetKeyCodeFromScanCode(SDL.ScanCode scanCode, SDL.KeyModifier keyModifier, SDL.Bool keyEvent)
+        private static extern SDL.KeyCode SDL_GetKeyFromScancode(SDL.ScanCode scanCode, SDL.KeyModifier keyModifier, Utils.Bool keyEvent);
+        public static SDL.KeyCode GetKeyCodeFromScanCode(SDL.ScanCode scanCode, SDL.KeyModifier keyModifier, Utils.Bool keyEvent)
         {
             return SDL_GetKeyFromScancode(scanCode, keyModifier, keyEvent);
         }

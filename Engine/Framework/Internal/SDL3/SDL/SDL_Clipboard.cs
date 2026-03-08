@@ -7,10 +7,10 @@ namespace Engine
     {
         // Set Clipboard Text
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetClipboardText(byte* text);
+        private static extern Utils.Bool SDL_SetClipboardText(byte* text);
         public static bool SetClipboardText(string text)
         {
-            var bytes = SDL.StringToUtf8(text);
+            var bytes = Utils.StringToUtf8(text);
 
             fixed (byte* utf8 = bytes)
             {
@@ -23,7 +23,7 @@ namespace Engine
         private static extern byte* SDL_GetClipboardText();
         public static string GetClipboardText()
         {
-            return SDL.Utf8ToString(SDL_GetClipboardText());
+            return Utils.Utf8ToString(SDL_GetClipboardText());
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Engine
         
         // Set Track Audio
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_SetTrackAudio(SDL.Track* track, SDL.Audio* audio);
+        private static extern Utils.Bool MIX_SetTrackAudio(SDL.Track* track, SDL.Audio* audio);
         public static bool SetTrackAudio(SDL.Track* track, SDL.Audio* audio)
         {
             return MIX_SetTrackAudio(track, audio);
@@ -39,7 +39,7 @@ namespace Engine
         
         // Set Track Playback Position
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_SetTrackPlaybackPosition(SDL.Track* track, long frames);
+        private static extern Utils.Bool MIX_SetTrackPlaybackPosition(SDL.Track* track, long frames);
         public static bool SetTrackPlaybackPosition(SDL.Track* track, long frames)
         {
             return MIX_SetTrackPlaybackPosition(track, frames);
@@ -55,7 +55,7 @@ namespace Engine
         
         // Set Track Loops
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_SetTrackLoops(SDL.Track* track, int loops);
+        private static extern Utils.Bool MIX_SetTrackLoops(SDL.Track* track, int loops);
         public static bool SetTrackLoops(SDL.Track* track, int loops)
         {
             return MIX_SetTrackLoops(track, loops);
@@ -71,7 +71,7 @@ namespace Engine
         
         // Set Track Gain
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_SetTrackGain(SDL.Track* track, float gain);
+        private static extern Utils.Bool MIX_SetTrackGain(SDL.Track* track, float gain);
         public static bool SetTrackGain(SDL.Track* track, float gain)
         {
             return MIX_SetTrackGain(track, gain);
@@ -87,7 +87,7 @@ namespace Engine
         
         // Set Track Frequency Ratio
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_SetTrackFrequencyRatio(SDL.Track* track, float ratio);
+        private static extern Utils.Bool MIX_SetTrackFrequencyRatio(SDL.Track* track, float ratio);
         public static bool SetTrackFrequencyRatio(SDL.Track* track, float ratio)
         {
             return MIX_SetTrackFrequencyRatio(track, ratio);
@@ -103,7 +103,7 @@ namespace Engine
         
         // Set Track 3D Position
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_SetTrack3DPosition(SDL.Track* track, SDL.Point3D* position);
+        private static extern Utils.Bool MIX_SetTrack3DPosition(SDL.Track* track, SDL.Point3D* position);
         public static bool SetTrack3DPosition(SDL.Track* track, SDL.Point3D position)
         {
             return MIX_SetTrack3DPosition(track, &position);
@@ -111,7 +111,7 @@ namespace Engine
         
         // Get Track 3D Position
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_GetTrack3DPosition(SDL.Track* track, out SDL.Point3D position);
+        private static extern Utils.Bool MIX_GetTrack3DPosition(SDL.Track* track, out SDL.Point3D position);
         public static bool GetTrack3DPosition(SDL.Track* track, out SDL.Point3D position)
         {
             return MIX_GetTrack3DPosition(track, out position);
@@ -159,7 +159,7 @@ namespace Engine
         
         // Play Track
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_PlayTrack(SDL.Track* track, uint properties);
+        private static extern Utils.Bool MIX_PlayTrack(SDL.Track* track, uint properties);
         public static bool PlayTrack(SDL.Track* track, uint properties)
         {
             return MIX_PlayTrack(track, properties);
@@ -167,7 +167,7 @@ namespace Engine
         
         // Stop Track
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_StopTrack(SDL.Track* track, long fadeMs);
+        private static extern Utils.Bool MIX_StopTrack(SDL.Track* track, long fadeMs);
         public static bool StopTrack(SDL.Track* track, long fadeMs)
         {
             return MIX_StopTrack(track, fadeMs);
@@ -175,7 +175,7 @@ namespace Engine
         
         // Stop All Tracks
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_StopAllTracks(SDL.Mixer* mixer, long fadeMs);
+        private static extern Utils.Bool MIX_StopAllTracks(SDL.Mixer* mixer, long fadeMs);
         public static bool StopAllTracks(SDL.Mixer* mixer, long fadeMs)
         {
             return MIX_StopAllTracks(mixer, fadeMs);
@@ -183,7 +183,7 @@ namespace Engine
         
         // Pause Track
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_PauseTrack(SDL.Track* track);
+        private static extern Utils.Bool MIX_PauseTrack(SDL.Track* track);
         public static bool PauseTrack(SDL.Track* track)
         {
             return MIX_PauseTrack(track);
@@ -191,7 +191,7 @@ namespace Engine
         
         // Pause All Tracks
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_PauseAllTracks(SDL.Mixer* mixer);
+        private static extern Utils.Bool MIX_PauseAllTracks(SDL.Mixer* mixer);
         public static bool PauseAllTracks(SDL.Mixer* mixer)
         {
             return MIX_PauseAllTracks(mixer);
@@ -199,7 +199,7 @@ namespace Engine
         
         // Resume Track
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_ResumeTrack(SDL.Track* track);
+        private static extern Utils.Bool MIX_ResumeTrack(SDL.Track* track);
         public static bool ResumeTrack(SDL.Track* track)
         {
             return MIX_ResumeTrack(track);
@@ -207,7 +207,7 @@ namespace Engine
         
         // Resume All Tracks
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_ResumeAllTracks(SDL.Mixer* mixer);
+        private static extern Utils.Bool MIX_ResumeAllTracks(SDL.Mixer* mixer);
         public static bool ResumeAllTracks(SDL.Mixer* mixer)
         {
             return MIX_ResumeAllTracks(mixer);
@@ -215,7 +215,7 @@ namespace Engine
         
         // Track Playing
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_TrackPlaying(SDL.Track* track);
+        private static extern Utils.Bool MIX_TrackPlaying(SDL.Track* track);
         public static bool TrackPlaying(SDL.Track* track)
         {
             return MIX_TrackPlaying(track);
@@ -223,7 +223,7 @@ namespace Engine
         
         // Track Paused
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_TrackPaused(SDL.Track* track);
+        private static extern Utils.Bool MIX_TrackPaused(SDL.Track* track);
         public static bool TrackPaused(SDL.Track* track)
         {
             return MIX_TrackPaused(track);

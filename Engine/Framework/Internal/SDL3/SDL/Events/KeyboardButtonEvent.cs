@@ -17,8 +17,8 @@ namespace Engine
             public SDL.KeyCode keyCode;
             public SDL.KeyModifier keyModifier;
             private ushort raw;
-            public SDL.Bool down;
-            public SDL.Bool repeat;
+            public Utils.Bool down;
+            public Utils.Bool repeat;
         }
     }
 }

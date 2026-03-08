@@ -10,7 +10,7 @@ namespace Engine
         private static extern SDL.Font* TTF_OpenFont(byte* path, float size);
         public static SDL.Font* OpenFont(string path, float size)
         {
-            var bytes = SDL.StringToUtf8(path);
+            var bytes = Utils.StringToUtf8(path);
 
             fixed (byte* utf8 = bytes)
             {
@@ -20,7 +20,7 @@ namespace Engine
         
         // Open Font IO
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Font* TTF_OpenFontIO(SDL.IOStream* stream, SDL.Bool close, float size);
+        private static extern SDL.Font* TTF_OpenFontIO(SDL.IOStream* stream, Utils.Bool close, float size);
         public static SDL.Font* OpenFontIO(SDL.IOStream* stream, bool close, float size)
         {
             return TTF_OpenFontIO(stream, close, size);
@@ -36,7 +36,7 @@ namespace Engine
         
         // Add Fallback Font
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool TTF_AddFallbackFont(SDL.Font* font, SDL.Font* fallback);
+        private static extern Utils.Bool TTF_AddFallbackFont(SDL.Font* font, SDL.Font* fallback);
         public static bool AddFallbackFont(SDL.Font* font, SDL.Font* fallback)
         {
             return TTF_AddFallbackFont(font, fallback);
@@ -60,7 +60,7 @@ namespace Engine
         
         // Set Font Size
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool TTF_SetFontSize(SDL.Font* font, float size);
+        private static extern Utils.Bool TTF_SetFontSize(SDL.Font* font, float size);
         public static bool SetFontSize(SDL.Font* font, float size)
         {
             return TTF_SetFontSize(font, size);
@@ -76,7 +76,7 @@ namespace Engine
         
         // Set Font SDF
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool TTF_SetFontSDF(SDL.Font* font, SDL.Bool enabled);
+        private static extern Utils.Bool TTF_SetFontSDF(SDL.Font* font, Utils.Bool enabled);
         public static bool SetFontSDF(SDL.Font* font, bool enabled)
         {
             return TTF_SetFontSDF(font, enabled);
@@ -84,7 +84,7 @@ namespace Engine
         
         // Get Font SDF
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool TTF_GetFontSDF(SDL.Font* font);
+        private static extern Utils.Bool TTF_GetFontSDF(SDL.Font* font);
         public static bool GetFontSDF(SDL.Font* font)
         {
             return TTF_GetFontSDF(font);
@@ -124,7 +124,7 @@ namespace Engine
         
         // Set Font Kerning
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void TTF_SetFontKerning(SDL.Font* font, SDL.Bool enabled);
+        private static extern void TTF_SetFontKerning(SDL.Font* font, Utils.Bool enabled);
         public static void SetFontKerning(SDL.Font* font, bool enabled)
         {
             TTF_SetFontKerning(font, enabled);
@@ -132,7 +132,7 @@ namespace Engine
         
         // Get Font Kerning
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool TTF_GetFontKerning(SDL.Font* font);
+        private static extern Utils.Bool TTF_GetFontKerning(SDL.Font* font);
         public static bool GetFontKerning(SDL.Font* font)
         {
             return TTF_GetFontKerning(font);
@@ -140,7 +140,7 @@ namespace Engine
         
         // Set Font Char Spacing
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool TTF_SetFontCharSpacing(SDL.Font* font, int spacing);
+        private static extern Utils.Bool TTF_SetFontCharSpacing(SDL.Font* font, int spacing);
         public static bool SetFontCharSpacing(SDL.Font* font, int spacing)
         {
             return TTF_SetFontCharSpacing(font, spacing);
@@ -188,7 +188,7 @@ namespace Engine
         
         // Set Font Direction
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool TTF_SetFontDirection(SDL.Font* font, SDL.FontDirection direction);
+        private static extern Utils.Bool TTF_SetFontDirection(SDL.Font* font, SDL.FontDirection direction);
         public static bool SetFontDirection(SDL.Font* font, SDL.FontDirection direction)
         {
             return TTF_SetFontDirection(font, direction);
@@ -204,7 +204,7 @@ namespace Engine
 
         // Set Font Outline
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool TTF_SetFontOutline(SDL.Font* font, int outline);
+        private static extern Utils.Bool TTF_SetFontOutline(SDL.Font* font, int outline);
         public static bool SetFontOutline(SDL.Font* font, int outline)
         {
             return TTF_SetFontOutline(font, outline);
@@ -228,10 +228,10 @@ namespace Engine
         
         // Get String Size
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool TTF_GetStringSize(SDL.Font* font, byte* text, UIntPtr size, out int w, out int h);
+        private static extern Utils.Bool TTF_GetStringSize(SDL.Font* font, byte* text, UIntPtr size, out int w, out int h);
         public static bool GetStringSize(SDL.Font* font, string text, out int w, out int h)
         {
-            var bytes = SDL.StringToUtf8(text);
+            var bytes = Utils.StringToUtf8(text);
 
             fixed (byte* utf8 = bytes)
             {
@@ -242,10 +242,10 @@ namespace Engine
     
         // Measure String
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool TTF_MeasureString(SDL.Font* font, byte* text, UIntPtr size, int maxWidth, out int width, out UIntPtr length);
+        private static extern Utils.Bool TTF_MeasureString(SDL.Font* font, byte* text, UIntPtr size, int maxWidth, out int width, out UIntPtr length);
         public static bool MeasureString(SDL.Font* font, string text, int maxWidth, out int width, out UIntPtr length)
         {
-            var bytes = SDL.StringToUtf8(text);
+            var bytes = Utils.StringToUtf8(text);
 
             fixed (byte* utf8 = bytes)
             {
@@ -259,7 +259,7 @@ namespace Engine
         private static extern SDL.Surface* TTF_RenderText_Solid(SDL.Font* font, byte* text, UIntPtr size, SDL.Color color);
         public static SDL.Surface* RenderTextSolid(SDL.Font* font, string text, SDL.Color color)
         {
-            var bytes = SDL.StringToUtf8(text);
+            var bytes = Utils.StringToUtf8(text);
 
             fixed (byte* utf8 = bytes)
             {
@@ -273,7 +273,7 @@ namespace Engine
         private static extern SDL.Surface* TTF_RenderText_Solid_Wrapped(SDL.Font* font, byte* text, UIntPtr size, SDL.Color color, int wrapLength);
         public static SDL.Surface* RenderTextSolidWrapped(SDL.Font* font, string text, SDL.Color color, int wrapLength)
         {
-            var bytes = SDL.StringToUtf8(text);
+            var bytes = Utils.StringToUtf8(text);
 
             fixed (byte* utf8 = bytes)
             {
@@ -287,7 +287,7 @@ namespace Engine
         private static extern SDL.Surface* TTF_RenderText_Shaded(SDL.Font* font, byte* text, UIntPtr size, SDL.Color foreground, SDL.Color background);
         public static SDL.Surface* RenderTextShaded(SDL.Font* font, string text, SDL.Color foreground, SDL.Color background)
         {
-            var bytes = SDL.StringToUtf8(text);
+            var bytes = Utils.StringToUtf8(text);
 
             fixed (byte* utf8 = bytes)
             {
@@ -301,7 +301,7 @@ namespace Engine
         private static extern SDL.Surface* TTF_RenderText_Shaded_Wrapped(SDL.Font* font, byte* text, UIntPtr size, SDL.Color foreground, SDL.Color background, int wrapWidth);
         public static SDL.Surface* RenderTextShadedWrapped(SDL.Font* font, string text, SDL.Color foreground, SDL.Color background, int wrapWidth)
         {
-            var bytes = SDL.StringToUtf8(text);
+            var bytes = Utils.StringToUtf8(text);
 
             fixed (byte* utf8 = bytes)
             {
@@ -315,7 +315,7 @@ namespace Engine
         private static extern SDL.Surface* TTF_RenderText_Blended(SDL.Font* font, byte* text, UIntPtr size, SDL.Color color);
         public static SDL.Surface* RenderTextBlended(SDL.Font* font, string text, SDL.Color color)
         {
-            var bytes = SDL.StringToUtf8(text);
+            var bytes = Utils.StringToUtf8(text);
 
             fixed (byte* utf8 = bytes)
             {
@@ -329,7 +329,7 @@ namespace Engine
         private static extern SDL.Surface* TTF_RenderText_Blended_Wrapped(SDL.Font* font, byte* text, UIntPtr size, SDL.Color color, int wrapWidth);
         public static SDL.Surface* RenderTextBlendedWrapped(SDL.Font* font, string text, SDL.Color color, int wrapWidth)
         {
-            var bytes = SDL.StringToUtf8(text);
+            var bytes = Utils.StringToUtf8(text);
 
             fixed (byte* utf8 = bytes)
             {
@@ -343,7 +343,7 @@ namespace Engine
         private static extern SDL.Surface* TTF_RenderText_LCD(SDL.Font* font, byte* text, UIntPtr size, SDL.Color foreground, SDL.Color background);
         public static SDL.Surface* RenderTextLCD(SDL.Font* font, string text, SDL.Color foreground, SDL.Color background)
         {
-            var bytes = SDL.StringToUtf8(text);
+            var bytes = Utils.StringToUtf8(text);
 
             fixed (byte* utf8 = bytes)
             {
@@ -357,7 +357,7 @@ namespace Engine
         private static extern SDL.Surface* TTF_RenderText_LCD_Wrapped(SDL.Font* font, byte* text, UIntPtr size, SDL.Color foreground, SDL.Color background, int wrapWidth);
         public static SDL.Surface* RenderTextLCDWrapped(SDL.Font* font, string text, SDL.Color foreground, SDL.Color background, int wrapWidth)
         {
-            var bytes = SDL.StringToUtf8(text);
+            var bytes = Utils.StringToUtf8(text);
 
             fixed (byte* utf8 = bytes)
             {

@@ -47,7 +47,7 @@ namespace Engine
         
         // Set Mixer Gain
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_SetMixerGain(SDL.Mixer* mixer, float gain);
+        private static extern Utils.Bool MIX_SetMixerGain(SDL.Mixer* mixer, float gain);
         public static bool SetMixerGain(SDL.Mixer* mixer, float gain)
         {
             return MIX_SetMixerGain(mixer, gain);
@@ -63,7 +63,7 @@ namespace Engine
         
         // Set Mixer Frequency Ratio
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_SetMixerFrequencyRatio(SDL.Mixer* mixer, float ratio);
+        private static extern Utils.Bool MIX_SetMixerFrequencyRatio(SDL.Mixer* mixer, float ratio);
         public static bool SetMixerFrequencyRatio(SDL.Mixer* mixer, float ratio)
         {
             return MIX_SetMixerFrequencyRatio(mixer, ratio);

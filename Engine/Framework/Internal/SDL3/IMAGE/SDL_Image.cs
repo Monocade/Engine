@@ -10,7 +10,7 @@ namespace Engine
         private static extern SDL.Surface* IMG_Load(byte* path);
         public static SDL.Surface* LoadSurface(string path)
         {
-            var bytes = SDL.StringToUtf8(path);
+            var bytes = Utils.StringToUtf8(path);
 
             fixed (byte* utf8 = bytes)
             {
@@ -23,7 +23,7 @@ namespace Engine
         private static extern SDL.Texture* IMG_LoadTexture(SDL.Renderer* renderer, byte* path);
         public static SDL.Texture* LoadTexture(SDL.Renderer* renderer, string path)
         {
-            var bytes = SDL.StringToUtf8(path);
+            var bytes = Utils.StringToUtf8(path);
 
             fixed (byte* utf8 = bytes)
             {
@@ -33,7 +33,7 @@ namespace Engine
         
         // Load Surface IO
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Surface* IMG_Load_IO(SDL.IOStream* stream, SDL.Bool close);
+        private static extern SDL.Surface* IMG_Load_IO(SDL.IOStream* stream, Utils.Bool close);
         public static SDL.Surface* LoadSurfaceIO(SDL.IOStream* stream, bool close)
         {
             return IMG_Load_IO(stream, close);
@@ -41,7 +41,7 @@ namespace Engine
         
         // Load Texture IO
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Texture* IMG_LoadTexture_IO(SDL.Renderer* renderer, SDL.IOStream* stream, SDL.Bool close);
+        private static extern SDL.Texture* IMG_LoadTexture_IO(SDL.Renderer* renderer, SDL.IOStream* stream, Utils.Bool close);
         public static SDL.Texture* LoadTextureIO(SDL.Renderer* renderer, SDL.IOStream* stream, bool close)
         {
             return IMG_LoadTexture_IO(renderer, stream, close);
@@ -49,10 +49,10 @@ namespace Engine
         
         // Save Surface
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool IMG_Save(SDL.Surface* surface, byte* path);
+        private static extern Utils.Bool IMG_Save(SDL.Surface* surface, byte* path);
         public static bool SaveSurface(SDL.Surface* surface, string path)
         {
-            var bytes = SDL.StringToUtf8(path);
+            var bytes = Utils.StringToUtf8(path);
 
             fixed (byte* utf8 = bytes)
             {
@@ -65,7 +65,7 @@ namespace Engine
         {
             SDL.Surface* surface = SDL.CreateSurfaceFromTexture(renderer, texture);
             {
-                var bytes = SDL.StringToUtf8(path);
+                var bytes = Utils.StringToUtf8(path);
 
                 fixed (byte* utf8 = bytes)
                 {

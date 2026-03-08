@@ -3,7 +3,7 @@ using System;
 
 namespace Engine
 {
-    public static unsafe partial class SDL
+    public static unsafe partial class Utils
     {
         public static string Utf8ToString(byte* ptr, bool free = false)
         {

@@ -15,7 +15,7 @@ namespace Engine
     
         // Close IO
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_CloseIO(SDL.IOStream* stream);
+        private static extern Utils.Bool SDL_CloseIO(SDL.IOStream* stream);
         public static bool CloseIO(SDL.IOStream* stream)
         {
             return SDL_CloseIO(stream);

@@ -7,10 +7,10 @@ namespace Engine
     {
         // Load Audio
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Audio* MIX_LoadAudio(SDL.Mixer* mixer, byte* path, SDL.Bool predecode);
+        private static extern SDL.Audio* MIX_LoadAudio(SDL.Mixer* mixer, byte* path, Utils.Bool predecode);
         public static SDL.Audio* LoadAudio(SDL.Mixer* mixer, string path, bool predecode)
         {
-            var bytes = SDL.StringToUtf8(path);
+            var bytes = Utils.StringToUtf8(path);
 
             fixed (byte* utf8 = bytes)
             {
@@ -20,7 +20,7 @@ namespace Engine
         
         // Load Audio IO
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Audio* MIX_LoadAudio_IO(SDL.Mixer* mixer, SDL.IOStream* stream, SDL.Bool predecode, SDL.Bool close);
+        private static extern SDL.Audio* MIX_LoadAudio_IO(SDL.Mixer* mixer, SDL.IOStream* stream, Utils.Bool predecode, Utils.Bool close);
         public static SDL.Audio* LoadAudioIO(SDL.Mixer* mixer, SDL.IOStream* stream, bool predecode, bool close)
         {
             return MIX_LoadAudio_IO(mixer, stream, predecode, close);
@@ -52,7 +52,7 @@ namespace Engine
         
         // Get Audio Format
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_GetAudioFormat(SDL.Audio* audio, out SDL.AudioSpec spec);
+        private static extern Utils.Bool MIX_GetAudioFormat(SDL.Audio* audio, out SDL.AudioSpec spec);
         public static bool GetAudioFormat(SDL.Audio* audio, out SDL.AudioSpec spec)
         {
             return MIX_GetAudioFormat(audio, out spec);
@@ -76,7 +76,7 @@ namespace Engine
         
         // Play Audio
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool MIX_PlayAudio(SDL.Mixer* mixer, SDL.Audio* audio);
+        private static extern Utils.Bool MIX_PlayAudio(SDL.Mixer* mixer, SDL.Audio* audio);
         public static bool PlayAudio(SDL.Mixer* mixer, SDL.Audio* audio)
         {
             return MIX_PlayAudio(mixer, audio);

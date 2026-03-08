@@ -31,7 +31,7 @@ namespace Engine
         
         // Get Texture Size
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetTextureSize(SDL.Texture* texture, out float w, out float h);
+        private static extern Utils.Bool SDL_GetTextureSize(SDL.Texture* texture, out float w, out float h);
         public static bool GetTextureSize(SDL.Texture* texture, out float w, out float h)
         {
             return SDL_GetTextureSize(texture, out w, out h);
@@ -39,7 +39,7 @@ namespace Engine
         
         // Set Texture Color Mod
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetTextureColorMod(SDL.Texture* texture, byte r, byte g, byte b);
+        private static extern Utils.Bool SDL_SetTextureColorMod(SDL.Texture* texture, byte r, byte g, byte b);
         public static bool SetTextureColorMod(SDL.Texture* texture, byte r, byte g, byte b)
         {
             return SDL_SetTextureColorMod(texture, r, g, b);
@@ -47,7 +47,7 @@ namespace Engine
         
         // Get Texture Color Mod
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetTextureColorMod(SDL.Texture* texture, out byte r, out byte g, out byte b);
+        private static extern Utils.Bool SDL_GetTextureColorMod(SDL.Texture* texture, out byte r, out byte g, out byte b);
         public static bool GetTextureColorMod(SDL.Texture* texture, out byte r, out byte g, out byte b)
         {
             return SDL_GetTextureColorMod(texture, out r, out g, out b);
@@ -55,7 +55,7 @@ namespace Engine
         
         // Set Texture Color Mod Float
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetTextureColorModFloat(SDL.Texture* texture, float r, float g, float b);
+        private static extern Utils.Bool SDL_SetTextureColorModFloat(SDL.Texture* texture, float r, float g, float b);
         public static bool SetTextureColorModFloat(SDL.Texture* texture, float r, float g, float b)
         {
             return SDL_SetTextureColorModFloat(texture, r, g, b);
@@ -63,7 +63,7 @@ namespace Engine
         
         // Get Texture Color Mod Float
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetTextureColorModFloat(SDL.Texture* texture, out float r, out float g, out float b);
+        private static extern Utils.Bool SDL_GetTextureColorModFloat(SDL.Texture* texture, out float r, out float g, out float b);
         public static bool GetTextureColorModFloat(SDL.Texture* texture, out float r, out float g, out float b)
         {
             return SDL_GetTextureColorModFloat(texture, out r, out g, out b);
@@ -71,7 +71,7 @@ namespace Engine
         
         // Set Texture Alpha Mod
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetTextureAlphaMod(SDL.Texture* texture, byte alpha);
+        private static extern Utils.Bool SDL_SetTextureAlphaMod(SDL.Texture* texture, byte alpha);
         public static bool SetTextureAlphaMod(SDL.Texture* texture, byte alpha)
         {
             return SDL_SetTextureAlphaMod(texture, alpha);
@@ -79,7 +79,7 @@ namespace Engine
         
         // Get Texture Alpha Mod
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetTextureAlphaMod(SDL.Texture* texture, out byte alpha);
+        private static extern Utils.Bool SDL_GetTextureAlphaMod(SDL.Texture* texture, out byte alpha);
         public static bool GetTextureAlphaMod(SDL.Texture* texture, out byte alpha)
         {
             return SDL_GetTextureAlphaMod(texture, out alpha);
@@ -87,7 +87,7 @@ namespace Engine
         
         // Set Texture Alpha Mod Float
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetTextureAlphaModFloat(SDL.Texture* texture, float alpha);
+        private static extern Utils.Bool SDL_SetTextureAlphaModFloat(SDL.Texture* texture, float alpha);
         public static bool SetTextureAlphaModFloat(SDL.Texture* texture, float alpha)
         {
             return SDL_SetTextureAlphaModFloat(texture, alpha);
@@ -95,7 +95,7 @@ namespace Engine
         
         // Get Texture Alpha Mod Float
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetTextureAlphaModFloat(SDL.Texture* texture, out float alpha);
+        private static extern Utils.Bool SDL_GetTextureAlphaModFloat(SDL.Texture* texture, out float alpha);
         public static bool GetTextureAlphaModFloat(SDL.Texture* texture, out float alpha)
         {
             return SDL_GetTextureAlphaModFloat(texture, out alpha);
@@ -103,7 +103,7 @@ namespace Engine
         
         // Set Texture Blend Mode
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetTextureBlendMode(SDL.Texture* texture, SDL.BlendMode mode);
+        private static extern Utils.Bool SDL_SetTextureBlendMode(SDL.Texture* texture, SDL.BlendMode mode);
         public static bool SetTextureBlendMode(SDL.Texture* texture, SDL.BlendMode mode)
         {
             return SDL_SetTextureBlendMode(texture, mode);
@@ -111,7 +111,7 @@ namespace Engine
         
         // Get Texture Blend Mode
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetTextureBlendMode(SDL.Texture* texture, out SDL.BlendMode mode);
+        private static extern Utils.Bool SDL_GetTextureBlendMode(SDL.Texture* texture, out SDL.BlendMode mode);
         public static bool GetTextureBlendMode(SDL.Texture* texture, out SDL.BlendMode mode)
         {
             return SDL_GetTextureBlendMode(texture, out mode);
@@ -119,7 +119,7 @@ namespace Engine
         
         // Set Texture Scale Mode
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetTextureScaleMode(SDL.Texture* texture, SDL.ScaleMode mode);
+        private static extern Utils.Bool SDL_SetTextureScaleMode(SDL.Texture* texture, SDL.ScaleMode mode);
         public static bool SetTextureScaleMode(SDL.Texture* texture, SDL.ScaleMode mode)
         {
             return SDL_SetTextureScaleMode(texture, mode);
@@ -127,7 +127,7 @@ namespace Engine
         
         // Get Texture Scale Mode
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetTextureScaleMode(SDL.Texture* texture, out SDL.ScaleMode mode);
+        private static extern Utils.Bool SDL_GetTextureScaleMode(SDL.Texture* texture, out SDL.ScaleMode mode);
         public static bool GetTextureScaleMode(SDL.Texture* texture, out SDL.ScaleMode mode)
         {
             return SDL_GetTextureScaleMode(texture, out mode);
@@ -135,7 +135,7 @@ namespace Engine
         
         // Set Default Texture Scale Mode
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetDefaultTextureScaleMode(SDL.Renderer* renderer, SDL.ScaleMode mode);
+        private static extern Utils.Bool SDL_SetDefaultTextureScaleMode(SDL.Renderer* renderer, SDL.ScaleMode mode);
         public static bool SetDefaultTextureScaleMod(SDL.Renderer* renderer, SDL.ScaleMode mode)
         {
             return SDL_SetDefaultTextureScaleMode(renderer, mode);
@@ -143,7 +143,7 @@ namespace Engine
 
         // Get Default Texture Scale Mode
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetDefaultTextureScaleMode(SDL.Renderer* renderer, out SDL.ScaleMode mode);
+        private static extern Utils.Bool SDL_GetDefaultTextureScaleMode(SDL.Renderer* renderer, out SDL.ScaleMode mode);
         public static bool GetDefaultTextureScaleMode(SDL.Renderer* renderer, out SDL.ScaleMode mode)
         {
             return SDL_GetDefaultTextureScaleMode(renderer, out mode);
@@ -151,7 +151,7 @@ namespace Engine
         
         // Update Texture
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_UpdateTexture(SDL.Texture* texture, SDL.Rect* rect, IntPtr pixels, int pitch);
+        private static extern Utils.Bool SDL_UpdateTexture(SDL.Texture* texture, SDL.Rect* rect, IntPtr pixels, int pitch);
         public static bool UpdateTexture(SDL.Texture* texture, SDL.Rect? rect, byte[] pixels, int width)
         {
             fixed (byte* p = pixels)

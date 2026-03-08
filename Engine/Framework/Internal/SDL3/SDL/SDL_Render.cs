@@ -10,7 +10,7 @@ namespace Engine
         private static extern SDL.Renderer* SDL_CreateRenderer(SDL.Window* window, byte* name);
         public static SDL.Renderer* CreateRenderer(SDL.Window* window, string name)
         {
-            var bytes = SDL.StringToUtf8(name);
+            var bytes = Utils.StringToUtf8(name);
 
             fixed (byte* utf8 = bytes)
             {
@@ -47,12 +47,12 @@ namespace Engine
         private static extern byte* SDL_GetRendererName(SDL.Renderer* renderer);
         public static string GetRendererName(SDL.Renderer* renderer)
         {
-            return SDL.Utf8ToString(SDL_GetRendererName(renderer));
+            return Utils.Utf8ToString(SDL_GetRendererName(renderer));
         }
         
         // Get Render Output Size
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetRenderOutputSize(SDL.Renderer* renderer, out int w, out int h);
+        private static extern Utils.Bool SDL_GetRenderOutputSize(SDL.Renderer* renderer, out int w, out int h);
         public static bool GetRenderOutputSize(SDL.Renderer* renderer, out int w, out int h)
         {
             return SDL_GetRenderOutputSize(renderer, out w, out h);
@@ -60,7 +60,7 @@ namespace Engine
         
         // Get Current Render Output Size
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetCurrentRenderOutputSize(SDL.Renderer* renderer, out int w, out int h);
+        private static extern Utils.Bool SDL_GetCurrentRenderOutputSize(SDL.Renderer* renderer, out int w, out int h);
         public static bool GetCurrentRenderOutputSize(SDL.Renderer* renderer, out int w, out int h)
         {
             return SDL_GetCurrentRenderOutputSize(renderer, out w, out h);
@@ -68,7 +68,7 @@ namespace Engine
         
         // Set Render Target
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetRenderTarget(SDL.Renderer* renderer, SDL.Texture* texture);
+        private static extern Utils.Bool SDL_SetRenderTarget(SDL.Renderer* renderer, SDL.Texture* texture);
         public static bool SetRenderTarget(SDL.Renderer* renderer, SDL.Texture* texture)
         {
             return SDL_SetRenderTarget(renderer, texture);
@@ -84,7 +84,7 @@ namespace Engine
         
         // Set Render Logical Presentation
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetRenderLogicalPresentation(SDL.Renderer* renderer, int w, int h, SDL.Presentation presentation);
+        private static extern Utils.Bool SDL_SetRenderLogicalPresentation(SDL.Renderer* renderer, int w, int h, SDL.Presentation presentation);
         public static bool SetRenderLogicalPresentation(SDL.Renderer* renderer, int w, int h, SDL.Presentation presentation)
         {
             return SDL_SetRenderLogicalPresentation(renderer, w, h, presentation);
@@ -92,7 +92,7 @@ namespace Engine
         
         // Get Render Logical Presentation
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetRenderLogicalPresentation(SDL.Renderer* renderer, out int w, out int h, out SDL.Presentation presentation);
+        private static extern Utils.Bool SDL_GetRenderLogicalPresentation(SDL.Renderer* renderer, out int w, out int h, out SDL.Presentation presentation);
         public static bool GetRenderLogicalPresentation(SDL.Renderer* renderer, out int w, out int h, out SDL.Presentation presentation)
         {
             return SDL_GetRenderLogicalPresentation(renderer, out w, out h, out presentation);
@@ -100,7 +100,7 @@ namespace Engine
         
         // Get Render Logical Presentation Rect
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetRenderLogicalPresentationRect(SDL.Renderer* renderer, out SDL.FRect rect);
+        private static extern Utils.Bool SDL_GetRenderLogicalPresentationRect(SDL.Renderer* renderer, out SDL.FRect rect);
         public static bool GetRenderLogicalPresentationRect(SDL.Renderer* renderer, out SDL.FRect rect)
         {
             return SDL_GetRenderLogicalPresentationRect(renderer, out rect);
@@ -108,7 +108,7 @@ namespace Engine
         
         // Set Render Viewport
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetRenderViewport(SDL.Renderer* renderer, SDL.Rect* rect);
+        private static extern Utils.Bool SDL_SetRenderViewport(SDL.Renderer* renderer, SDL.Rect* rect);
         public static bool SetRenderViewport(SDL.Renderer* renderer, SDL.Rect? rect)
         {
             var r = rect.GetValueOrDefault();
@@ -119,7 +119,7 @@ namespace Engine
         
         // Get Render Viewport
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetRenderViewport(SDL.Renderer* renderer, out SDL.Rect rect);
+        private static extern Utils.Bool SDL_GetRenderViewport(SDL.Renderer* renderer, out SDL.Rect rect);
         public static bool GetRenderViewport(SDL.Renderer* renderer, out SDL.Rect rect)
         {
             return SDL_GetRenderViewport(renderer, out rect);
@@ -127,7 +127,7 @@ namespace Engine
         
         // Render Viewport Set
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderViewportSet(SDL.Renderer* renderer);
+        private static extern Utils.Bool SDL_RenderViewportSet(SDL.Renderer* renderer);
         public static bool RenderViewportSet(SDL.Renderer* renderer)
         {
             return SDL_RenderViewportSet(renderer);
@@ -135,7 +135,7 @@ namespace Engine
         
         // Get Render Safe Area
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetRenderSafeArea(SDL.Renderer* renderer, out SDL.Rect rect);
+        private static extern Utils.Bool SDL_GetRenderSafeArea(SDL.Renderer* renderer, out SDL.Rect rect);
         public static bool GetRenderSafeArea(SDL.Renderer* renderer, out SDL.Rect rect)
         {
             return SDL_GetRenderSafeArea(renderer, out rect);
@@ -143,7 +143,7 @@ namespace Engine
         
         // Set Render Clip Rect
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetRenderClipRect(SDL.Renderer* renderer, SDL.Rect* rect);
+        private static extern Utils.Bool SDL_SetRenderClipRect(SDL.Renderer* renderer, SDL.Rect* rect);
         public static bool SetRenderClipRect(SDL.Renderer* renderer, SDL.Rect? rect)
         {
             var r = rect.GetValueOrDefault();
@@ -154,7 +154,7 @@ namespace Engine
         
         // Get Render Clip Rect
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetRenderClipRect(SDL.Renderer* renderer, out SDL.Rect rect);
+        private static extern Utils.Bool SDL_GetRenderClipRect(SDL.Renderer* renderer, out SDL.Rect rect);
         public static bool GetRenderClipRect(SDL.Renderer* renderer, out SDL.Rect rect)
         {
             return SDL_GetRenderClipRect(renderer, out rect);
@@ -162,7 +162,7 @@ namespace Engine
         
         // Render Clip Enabled
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderClipEnabled(SDL.Renderer* renderer);
+        private static extern Utils.Bool SDL_RenderClipEnabled(SDL.Renderer* renderer);
         public static bool RenderClipEnabled(SDL.Renderer* renderer)
         {
             return SDL_RenderClipEnabled(renderer);
@@ -170,7 +170,7 @@ namespace Engine
         
         // Set Render Scale
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetRenderScale(SDL.Renderer* renderer, float x, float y);
+        private static extern Utils.Bool SDL_SetRenderScale(SDL.Renderer* renderer, float x, float y);
         public static bool SetRenderScale(SDL.Renderer* renderer, float x, float y)
         {
             return SDL_SetRenderScale(renderer, x, y);
@@ -178,7 +178,7 @@ namespace Engine
         
         // Get Render Scale
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetRenderScale(SDL.Renderer* renderer, out float x, out float y);
+        private static extern Utils.Bool SDL_GetRenderScale(SDL.Renderer* renderer, out float x, out float y);
         public static bool GetRenderScale(SDL.Renderer* renderer, out float x, out float y)
         {
             return SDL_GetRenderScale(renderer, out x, out y);
@@ -186,7 +186,7 @@ namespace Engine
         
         // Set Render Draw Color
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetRenderDrawColor(SDL.Renderer* renderer, byte r, byte g, byte b, byte a);
+        private static extern Utils.Bool SDL_SetRenderDrawColor(SDL.Renderer* renderer, byte r, byte g, byte b, byte a);
         public static bool SetRenderDrawColor(SDL.Renderer* renderer, byte r, byte g, byte b, byte a)
         {
             return SDL_SetRenderDrawColor(renderer, r, g, b, a);
@@ -194,7 +194,7 @@ namespace Engine
         
         // Get Render Draw Color
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetRenderDrawColor(SDL.Renderer* renderer, out byte r, out byte g, out byte b, out byte a);
+        private static extern Utils.Bool SDL_GetRenderDrawColor(SDL.Renderer* renderer, out byte r, out byte g, out byte b, out byte a);
         public static bool GetRenderDrawColor(SDL.Renderer* renderer, out byte r, out byte g, out byte b, out byte a)
         {
             return SDL_GetRenderDrawColor(renderer, out r, out g, out b, out a);
@@ -202,7 +202,7 @@ namespace Engine
         
         // Set Render Draw Color Float
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetRenderDrawColorFloat(SDL.Renderer* renderer, float r, float g, float b, float a);
+        private static extern Utils.Bool SDL_SetRenderDrawColorFloat(SDL.Renderer* renderer, float r, float g, float b, float a);
         public static bool SetRenderDrawColorFloat(SDL.Renderer* renderer, float r, float g, float b, float a)
         {
             return SDL_SetRenderDrawColorFloat(renderer, r, g, b, a);
@@ -210,7 +210,7 @@ namespace Engine
         
         // Get Render Draw Color Float
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetRenderDrawColorFloat(SDL.Renderer* renderer, out float r, out float g, out float b, out float a);
+        private static extern Utils.Bool SDL_GetRenderDrawColorFloat(SDL.Renderer* renderer, out float r, out float g, out float b, out float a);
         public static bool GetRenderDrawColorFloat(SDL.Renderer* renderer, out float r, out float g, out float b, out float a)
         {
             return SDL_GetRenderDrawColorFloat(renderer, out r, out g, out b, out a);
@@ -218,7 +218,7 @@ namespace Engine
         
         // Set Render Color Scale
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetRenderColorScale(SDL.Renderer* renderer, float scale);
+        private static extern Utils.Bool SDL_SetRenderColorScale(SDL.Renderer* renderer, float scale);
         public static bool SetRenderColorScale(SDL.Renderer* renderer, float scale)
         {
             return SDL_SetRenderColorScale(renderer, scale);
@@ -226,7 +226,7 @@ namespace Engine
         
         // Get Render Color Scale
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetRenderColorScale(SDL.Renderer* renderer, out float scale);
+        private static extern Utils.Bool SDL_GetRenderColorScale(SDL.Renderer* renderer, out float scale);
         public static bool GetRenderColorScale(SDL.Renderer* renderer, out float scale)
         {
             return SDL_GetRenderColorScale(renderer, out scale);
@@ -234,7 +234,7 @@ namespace Engine
         
         // Set Render Draw Blend Mode
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetRenderDrawBlendMode(SDL.Renderer* renderer, SDL.BlendMode mode);
+        private static extern Utils.Bool SDL_SetRenderDrawBlendMode(SDL.Renderer* renderer, SDL.BlendMode mode);
         public static bool SetRenderDrawBlendMode(SDL.Renderer* renderer, SDL.BlendMode mode)
         {
             return SDL_SetRenderDrawBlendMode(renderer, mode);
@@ -242,7 +242,7 @@ namespace Engine
         
         // Get Render Draw Blend Mode
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetRenderDrawBlendMode(SDL.Renderer* renderer, out SDL.BlendMode mode);
+        private static extern Utils.Bool SDL_GetRenderDrawBlendMode(SDL.Renderer* renderer, out SDL.BlendMode mode);
         public static bool GetRenderDrawBlendMode(SDL.Renderer* renderer, out SDL.BlendMode mode)
         {
             return SDL_GetRenderDrawBlendMode(renderer, out mode);
@@ -250,7 +250,7 @@ namespace Engine
         
         // Set Render Vsync
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_SetRenderVSync(SDL.Renderer* renderer, int vsync);
+        private static extern Utils.Bool SDL_SetRenderVSync(SDL.Renderer* renderer, int vsync);
         public static bool SetRenderVSync(SDL.Renderer* renderer, int vsync)
         {
             return SDL_SetRenderVSync(renderer, vsync);
@@ -258,7 +258,7 @@ namespace Engine
 
         // Get Render VSync
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_GetRenderVSync(SDL.Renderer* renderer, out int vsync);
+        private static extern Utils.Bool SDL_GetRenderVSync(SDL.Renderer* renderer, out int vsync);
         public static bool GetRenderVSync(SDL.Renderer* renderer, out int vsync)
         {
             return SDL_GetRenderVSync(renderer, out vsync);
@@ -266,7 +266,7 @@ namespace Engine
         
         // Render Point
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderPoint(SDL.Renderer* renderer, float x, float y);
+        private static extern Utils.Bool SDL_RenderPoint(SDL.Renderer* renderer, float x, float y);
         public static bool RenderPoint(SDL.Renderer* renderer, float x, float y)
         {
             return SDL_RenderPoint(renderer, x, y);
@@ -274,7 +274,7 @@ namespace Engine
         
         // Render Points
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderPoints(SDL.Renderer* renderer, SDL.FPoint[] points, int count);
+        private static extern Utils.Bool SDL_RenderPoints(SDL.Renderer* renderer, SDL.FPoint[] points, int count);
         public static bool RenderPoints(SDL.Renderer* renderer, SDL.FPoint[] points, int count)
         {
             return SDL_RenderPoints(renderer, points, count);
@@ -282,7 +282,7 @@ namespace Engine
         
         // Render Line
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderLine(SDL.Renderer* renderer, float x1, float y1, float x2, float y2);
+        private static extern Utils.Bool SDL_RenderLine(SDL.Renderer* renderer, float x1, float y1, float x2, float y2);
         public static bool RenderLine(SDL.Renderer* renderer, float x1, float y1, float x2, float y2)
         {
             return SDL_RenderLine(renderer, x1, y1, x2, y2);
@@ -290,7 +290,7 @@ namespace Engine
         
         // Render Lines
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderLines(SDL.Renderer* renderer, SDL.FPoint[] points, int count);
+        private static extern Utils.Bool SDL_RenderLines(SDL.Renderer* renderer, SDL.FPoint[] points, int count);
         public static bool RenderLines(SDL.Renderer* renderer, SDL.FPoint[] points, int count)
         {
             return SDL_RenderLines(renderer, points, count);
@@ -298,7 +298,7 @@ namespace Engine
         
         // Render Rect
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderRect(SDL.Renderer* renderer, SDL.FRect* rect);
+        private static extern Utils.Bool SDL_RenderRect(SDL.Renderer* renderer, SDL.FRect* rect);
         public static bool RenderRect(SDL.Renderer* renderer, SDL.FRect? rect)
         {
             var r = rect.GetValueOrDefault();
@@ -309,7 +309,7 @@ namespace Engine
         
         // Render Rects
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderRects(SDL.Renderer* renderer, SDL.FRect[] rects, int count);
+        private static extern Utils.Bool SDL_RenderRects(SDL.Renderer* renderer, SDL.FRect[] rects, int count);
         public static bool RenderRects(SDL.Renderer* renderer, SDL.FRect[] rects, int count)
         {
             return SDL_RenderRects(renderer, rects, count);
@@ -317,7 +317,7 @@ namespace Engine
         
         // Render Fill Rect
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderFillRect(SDL.Renderer* renderer, SDL.FRect* rect);
+        private static extern Utils.Bool SDL_RenderFillRect(SDL.Renderer* renderer, SDL.FRect* rect);
         public static bool RenderFillRect(SDL.Renderer* renderer, SDL.FRect? rect)
         {
             var r = rect.GetValueOrDefault();
@@ -328,7 +328,7 @@ namespace Engine
         
         // Render Fill Rects
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderFillRects(SDL.Renderer* renderer, SDL.FRect[] rects, int count);
+        private static extern Utils.Bool SDL_RenderFillRects(SDL.Renderer* renderer, SDL.FRect[] rects, int count);
         public static bool RenderFillRects(SDL.Renderer* renderer, SDL.FRect[] rects, int count)
         {
             return SDL_RenderFillRects(renderer, rects, count);
@@ -336,7 +336,7 @@ namespace Engine
         
         // Render Texture
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderTexture(SDL.Renderer* renderer, SDL.Texture* texture, SDL.FRect* src, SDL.FRect* dst);
+        private static extern Utils.Bool SDL_RenderTexture(SDL.Renderer* renderer, SDL.Texture* texture, SDL.FRect* src, SDL.FRect* dst);
         public static bool RenderTexture(SDL.Renderer* renderer, SDL.Texture* texture, SDL.FRect? src, SDL.FRect? dst)
         {
             var s = src.GetValueOrDefault();
@@ -350,7 +350,7 @@ namespace Engine
         
         // Render Geometry
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderGeometry(SDL.Renderer* renderer, SDL.Texture* texture, SDL.Vertex[] vertices, int num_vertices, int[] indices, int num_indices);
+        private static extern Utils.Bool SDL_RenderGeometry(SDL.Renderer* renderer, SDL.Texture* texture, SDL.Vertex[] vertices, int num_vertices, int[] indices, int num_indices);
         public static bool RenderGeometry(SDL.Renderer* renderer, SDL.Texture* texture, SDL.Vertex[] vertices, int[] indices)
         {
             return SDL_RenderGeometry(renderer, texture, vertices, vertices.Length, indices, indices.Length);
@@ -358,7 +358,7 @@ namespace Engine
         
         // Render Geometry Raw
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderGeometryRaw(SDL.Renderer* renderer, SDL.Texture* texture, IntPtr positions, int positions_stride, IntPtr colors, int colors_stride, IntPtr uvs, int uvs_stride, int num_vertices, IntPtr indices, int num_indices, int size_indices);
+        private static extern Utils.Bool SDL_RenderGeometryRaw(SDL.Renderer* renderer, SDL.Texture* texture, IntPtr positions, int positions_stride, IntPtr colors, int colors_stride, IntPtr uvs, int uvs_stride, int num_vertices, IntPtr indices, int num_indices, int size_indices);
         public static bool RenderGeometryRaw(SDL.Renderer* renderer, SDL.Texture* texture, float[] positions, float[] colors, float[] uvs, int[] indices)
         {
             int vertices = positions.Length / 2;
@@ -381,10 +381,10 @@ namespace Engine
         
         // Render Debug Text
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderDebugText(SDL.Renderer* renderer, float x, float y, byte* text);
+        private static extern Utils.Bool SDL_RenderDebugText(SDL.Renderer* renderer, float x, float y, byte* text);
         public static bool RenderDebugText(SDL.Renderer* renderer, float x, float y, string text)
         {
-            var bytes = SDL.StringToUtf8(text);
+            var bytes = Utils.StringToUtf8(text);
 
             fixed (byte* utf8 = bytes)
             {
@@ -405,7 +405,7 @@ namespace Engine
         
         // Render Present
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderPresent(SDL.Renderer* renderer);
+        private static extern Utils.Bool SDL_RenderPresent(SDL.Renderer* renderer);
         public static bool RenderPresent(SDL.Renderer* renderer)
         {
             return SDL_RenderPresent(renderer);
@@ -413,7 +413,7 @@ namespace Engine
         
         // Render Clear
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool SDL_RenderClear(SDL.Renderer* renderer);
+        private static extern Utils.Bool SDL_RenderClear(SDL.Renderer* renderer);
         public static bool RenderClear(SDL.Renderer* renderer)
         {
             return SDL_RenderClear(renderer);

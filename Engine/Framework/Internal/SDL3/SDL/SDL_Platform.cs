@@ -10,7 +10,7 @@ namespace Engine
         private static extern byte* SDL_GetPlatform();
         public static string GetPlatform()
         {
-            return Utf8ToString(SDL_GetPlatform());
+            return Utils.Utf8ToString(SDL_GetPlatform());
         }
     }
 }

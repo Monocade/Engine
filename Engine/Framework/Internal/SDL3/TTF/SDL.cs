@@ -11,7 +11,7 @@ namespace Engine
         
         // Init
         [DllImport(library, CallingConvention = CallingConvention.Cdecl)]
-        private static extern SDL.Bool TTF_Init();
+        private static extern Utils.Bool TTF_Init();
         public static bool Init()
         {
             return TTF_Init();
